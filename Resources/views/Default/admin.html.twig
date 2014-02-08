@@ -2,48 +2,11 @@
 
 {% block admin_title %}{{ 'plugin.admin.title'|trans }}{% endblock %}
 {% block admin_page_title_content %}{{ 'plugin.admin.titlecontent'|trans }} {% endblock %}
+{% block admin_stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/bundles/newscooppiwik/piwik.css') }}"/>
+{% endblock %}
 
 {% block admin_content %}
-
-<style>
-.form {padding: 10px;}
-
-.form label {
-	width: 50px;
-	text-align: right;
-	margin-right: 10px;
-}
-
-.form input[type=text], .form input[type=number], .snippet, .imgtrack {
-	border-radius: 4px;
-	padding: 5px;
-	border: 1px solid #cccccc;
-}
-
-.form button[type=submit], .snippet, .imgtrack {
-	margin-left: 60px;
-}
-
-.negate-row-space {
-	margin-top: -10px;
-}
-
-.row {
-	margin-top: 10px;
-}
-
-.snippet {
-	width: 300px; height: 150px;
-}
-
-.imgtrack {
-	width: 300px; height: 80px;
-}
-
-.left {
-	margin-left:20px;
-}
-</style>
 
 <ul class="nav nav-tabs">
 	<li class="active"><a>Generate code</a></li>
