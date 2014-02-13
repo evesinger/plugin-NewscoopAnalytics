@@ -1,0 +1,3 @@
+<h1>hello !</h1>
+
+{{ test_piwik_block }} {{ /test_piwik_block }}

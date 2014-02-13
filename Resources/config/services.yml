@@ -1,0 +1,14 @@
+services:
+    newscoop_piwik_plugin.lifecyclesubscriber:
+        class: Newscoop\PiwikBundle\EventListener\LifecycleSubscriber
+        arguments:
+            - @em
+        tags:
+            - { name: kernel.event_subscriber}
+
+    newscoop_piwik_plugin.configure_menu_listener:
+        class: Newscoop\PiwikBundle\EventListener\ConfigureMenuListener
+        tags:
+            - { name: kernel.event_listener, event: newscoop_newscoop.menu_configure, method: onMenuConfigure }
+        arguments: 
+            - @translator

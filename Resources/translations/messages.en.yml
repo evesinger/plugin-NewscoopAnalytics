@@ -1,0 +1,6 @@
+Plugins: Plugins
+plugin:
+  admin:
+    title: "Piwik plugin page"
+    titlecontent: Piwik Plugin
+    content: Piwik Plugin content

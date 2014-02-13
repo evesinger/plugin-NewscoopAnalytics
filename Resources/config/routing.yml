@@ -1,0 +1,4 @@
+newscoop_piwik_plugin:
+    resource: "@NewscoopPiwikBundle/Controller/DefaultController.php"
+    type:     annotation
+    prefix:   /
