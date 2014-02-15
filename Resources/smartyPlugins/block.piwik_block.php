@@ -39,8 +39,6 @@ function smarty_block_piwik_block($params, $content, &$smarty, &$repeat)
     
     $value = $yaml->parse(file_get_contents($file));
     
-    //print ladybug_dump($value);
-
     $piwik_url = $value['url'];
     $idsite = $value['id'];
 
@@ -61,7 +59,6 @@ function smarty_block_piwik_block($params, $content, &$smarty, &$repeat)
     $html .= 'g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();';
     $html .= '</script>' . "\n" . '<!-- End Piwik Code -->';
 
-    // print ladybug_dump($html);
     return $html;
 
 

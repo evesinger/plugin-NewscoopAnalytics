@@ -1,6 +1,6 @@
 Plugins: Plugins
 plugin:
   admin:
-    title: "Piwik plugin page"
-    titlecontent: Piwik Plugin
-    content: Piwik Plugin content
+    title: "Piwik Manager"
+    titlecontent: Piwik Manager
+    content: Generate Piwik tracking code by submitting your Piwik-URL and SiteId.

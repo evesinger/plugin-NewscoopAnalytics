@@ -1,0 +1,1 @@
+Generates and implements Piwik analytics code for Newscoop.

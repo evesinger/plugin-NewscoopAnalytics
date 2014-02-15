@@ -3,9 +3,79 @@
 {% block admin_title %}{{ 'plugin.admin.title'|trans }}{% endblock %}
 {% block admin_page_title_content %}{{ 'plugin.admin.titlecontent'|trans }} {% endblock %}
 
-{% block admin_content %}{{ 'plugin.admin.content'|trans }}
+{% block admin_content %}
 
-{{ form_start(form) }}
+<style>
+.form {padding: 10px;}
+
+.form label {
+	width: 50px;
+	text-align: right;
+	margin-right: 10px;
+}
+
+.form input[type=text], .form input[type=number], .snippet {
+	border-radius: 4px;
+	padding: 5px;
+	border: 1px solid #cccccc;
+}
+
+.form button[type=submit], .snippet {
+	margin-left: 60px;
+}
+
+.negate-row-space {
+	margin-top: -10px;
+}
+
+.row {
+	margin-top: 10px;
+}
+
+.snippet {
+	width: 300px; height: 150px;
+}
+
+.left {
+	margin-left:20px;
+}
+</style>
+
+<ul class="nav nav-tabs">
+	<li class="active"><a>Generate code</a></li>
+	<li><a href="#"> Paste tracking code </a></li>
+	<li><a href="{{ path('newscoop_piwik_default_reporting') }}"> Reporting </a></li>
+</ul>
+
+<div class="row">
+<p class="left">{{ 'plugin.admin.content'|trans }}</p>
+</div>
+
+ <div class="form negate-row-space">
+
+{{ form_start(form, { 'attr': { 'class': 'form-horizontal' }}) }}
+<div class="row">
+{{ form_label(form.url) }}
+{{ form_widget(form.url, { 'attr': { 'placeholder': 'URL' }}) }}
+</div>
+
+<div class="row">
+{{ form_label(form.id) }}
+{{ form_widget(form.id, { 'attr': { 'placeholder': 'ID' }}) }}
+</div>
+
+<div class="row">
+{{ form_label(form.send) }}
+{{ form_widget(form.send, { 'attr': {'class': 'btn btn-default btn-sm'}}) }}
+</div>
+
 {{ form_end(form) }}
 
+<div class="row">
+<textarea class="snippet">
+{{ snippet }}
+</textarea>
+</div>
+
+</div>
 {% endblock %}
