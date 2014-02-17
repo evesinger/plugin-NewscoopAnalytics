@@ -3,4 +3,4 @@ plugin:
   admin:
     title: "Piwik Manager"
     titlecontent: Piwik Manager
-    content: Generate Piwik tracking code by submitting your Piwik-URL and SiteId.
+    content: Generate Piwik tracking code by submitting your Piwik-URL and Site Id.

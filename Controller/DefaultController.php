@@ -7,11 +7,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Yaml\Dumper;
+use Symfony\Component\Validator\Constraints\Range;
 
 class DefaultController extends Controller
 {
     /**
-     * @Route("/testpiwik")
+     * @Route("/admin/piwik_plugin/testpiwik")
+     * @Template()
      */
     public function indexAction(Request $request)
     {
@@ -37,20 +39,24 @@ class DefaultController extends Controller
     public function adminAction(Request $request)
     {
     	
+    //creates form
+
         $form = $this->createFormBuilder()
         ->add('url', 'text')
-        ->add('id', 'integer')
+        ->add('id', 'integer', array('constraints'=>new Range(array('min'=>1, 'minMessage'=>'Error: Site Id must be 1 or more') )))
         ->add('send', 'submit')
         ->getForm();
 
 
     $form->handleRequest($request);
 
+    //form validation and data retrieval
+
     if ($form->isValid()) {
       
         $data = $form->getData();
 
-        //print ladybug_dump($data);
+    //writes yml file
 
         $file = __DIR__.'/../config.yml';
         
@@ -63,6 +69,8 @@ class DefaultController extends Controller
 
     }
 
+    //reads yml file
+
     $yaml = new  \Symfony\Component\Yaml\Parser();
     $file = __DIR__.'/../config.yml';
     
@@ -72,10 +80,7 @@ class DefaultController extends Controller
     $piwik_url = $value['url'];
     $idsite = $value['id'];
 
-
-    //tracking has to be included on every page before <body> tag
-
-    //$token_auth = 'anonymous';
+    //generates code preview for textarea
 
     $html = '';
     $html .= '<!-- Piwik -->' . "\n" . '<script type="text/javascript">';
@@ -89,9 +94,20 @@ class DefaultController extends Controller
     $html .= 'g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();';
     $html .= '</script>' . "\n" . '<!-- End Piwik Code -->';
 
+
+    //generates code preview for Piwik Image tracking
+
+    $imgtrack = '';
+    $imgtrack .= '<!-- Piwik Image Tracker -->' . "\n";
+    $imgtrack .= '<img src="http://' . $piwik_url . '/piwik.php?idsite=' . $idsite . '&amp;rec=1" style="border:0" alt="" />' . "\n";
+    $imgtrack .= '<!-- End Piwik -->' ;
+
+    //renders form and code preview into template
+
     return $this->render('NewscoopPiwikBundle:Default:admin.html.twig', array(
           'form'=> $form->createView(),
           'snippet'=>$html,
+          'imgtrack'=>$imgtrack,
         ));
         
     }

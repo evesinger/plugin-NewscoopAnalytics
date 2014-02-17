@@ -14,13 +14,13 @@
 	margin-right: 10px;
 }
 
-.form input[type=text], .form input[type=number], .snippet {
+.form input[type=text], .form input[type=number], .snippet, .imgtrack {
 	border-radius: 4px;
 	padding: 5px;
 	border: 1px solid #cccccc;
 }
 
-.form button[type=submit], .snippet {
+.form button[type=submit], .snippet, .imgtrack {
 	margin-left: 60px;
 }
 
@@ -36,6 +36,10 @@
 	width: 300px; height: 150px;
 }
 
+.imgtrack {
+	width: 300px; height: 80px;
+}
+
 .left {
 	margin-left:20px;
 }
@@ -43,8 +47,7 @@
 
 <ul class="nav nav-tabs">
 	<li class="active"><a>Generate code</a></li>
-	<li><a href="#"> Paste tracking code </a></li>
-	<li><a href="{{ path('newscoop_piwik_default_reporting') }}"> Reporting </a></li>
+	<!--<li><a href="#"> Reporting </a></li>-->
 </ul>
 
 <div class="row">
@@ -62,6 +65,7 @@
 <div class="row">
 {{ form_label(form.id) }}
 {{ form_widget(form.id, { 'attr': { 'placeholder': 'ID' }}) }}
+<p>{{ form_errors(form.id) }}</p>
 </div>
 
 <div class="row">
@@ -72,9 +76,11 @@
 {{ form_end(form) }}
 
 <div class="row">
-<textarea class="snippet">
-{{ snippet }}
-</textarea>
+<textarea class="snippet">{{ snippet }}</textarea>
+</div>
+
+<div class="row">
+<textarea class="imgtrack">{{ imgtrack }}</textarea>
 </div>
 
 </div>
