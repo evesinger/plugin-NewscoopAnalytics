@@ -54,6 +54,12 @@
 <p class="left">{{ 'plugin.admin.content'|trans }}</p>
 </div>
 
+{% if error %}
+<div class="row">
+<p>{{ error }}</p>
+</div>
+{% endif %}
+
  <div class="form negate-row-space">
 
 {{ form_start(form, { 'attr': { 'class': 'form-horizontal' }}) }}

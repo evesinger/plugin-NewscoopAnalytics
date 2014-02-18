@@ -42,11 +42,6 @@ function smarty_block_piwik_block($params, $content, &$smarty, &$repeat)
     $piwik_url = $value['url'];
     $idsite = $value['id'];
 
-
-    //tracking has to be included on every page before <body> tag
-
-    //$token_auth = 'anonymous';
-
     $html = '';
     $html .= '<!-- Piwik -->' . "\n" . '<script type="text/javascript">';
     $html .= 'var _paq = _paq || [];';
