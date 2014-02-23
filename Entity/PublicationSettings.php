@@ -29,47 +29,47 @@ class PublicationSettings
 
     /**
      * @ORM\ManyToOne(targetEntity="Newscoop\Entity\Publication")
-     * @ORM\JoinColumn(name="publication_id", referencedColumnName="Id")
+     * @ORM\JoinColumn(name="publicationId", referencedColumnName="Id")
      * @var Newscoop\Entity\Publication
      */
     private $publication;
 
     /**
-     * @ORM\Column(type="string", name="piwik_url")
+     * @ORM\Column(type="string", name="piwikUrl")
      * @var string
      */
-    private $piwik_url;
+    private $piwikUrl;
 
     /**
-     * @ORM\Column(type="integer", name="piwik_id")
+     * @ORM\Column(type="integer", name="piwikId")
      * @var integer
      */
-    private $piwik_id;
+    private $piwikId;
 
     /**
-     * @ORM\Column(type="boolean", name="ip_anonymize")
+     * @ORM\Column(type="boolean", name="ipAnonymize")
      * @var boolean
      */
-    private $ip_anonymize;
+    private $ipAnonymize;
 
     /**
-     * @ORM\Column(type="datetime", name="piwik_post")
+     * @ORM\Column(type="datetime", name="piwikPost")
      * @var boolean
      */
-    private $piwik_post;
+    private $piwikPost;
 
     /**
-     * Getter for piwik_url
+     * Getter for piwikUrl
      *
      * @return string
      */
     public function getPiwikUrl()
     {
-        return $this->piwik_url;
+        return $this->piwikUrl;
     }
     
     /**
-     * Setter for piwik_url
+     * Setter for piwikUrl
      *
      * @param string $piwikUrl Value to set
      *
@@ -77,22 +77,22 @@ class PublicationSettings
      */
     public function setPiwikUrl($piwikUrl)
     {
-        $this->piwik_url = $piwikUrl;
+        $this->piwikUrl = $piwikUrl;
     
         return $this;
     }
     /**
-     * Getter for piwik_post
+     * Getter for piwikPost
      *
      * @return boolean
      */
     public function getPiwikPost()
     {
-        return $this->piwik_post;
+        return $this->piwikPost;
     }
-    
+
     /**
-     * Setter for piwik_post
+     * Setter for piwikPost
      *
      * @param boolean $piwikPost Value to set
      *
@@ -100,23 +100,23 @@ class PublicationSettings
      */
     public function setPiwikPost($piwikPost)
     {
-        $this->piwik_post = $piwikPost;
+        $this->piwikPost = $piwikPost;
     
         return $this;
     }
-    
+
     /**
-     * Getter for piwik_id
+     * Getter for piwikId
      *
      * @return integer
      */
     public function getPiwikId()
     {
-        return $this->piwik_id;
+        return $this->piwikId;
     }
     
     /**
-     * Setter for piwik_id
+     * Setter for piwikId
      *
      * @param integer $piwikId Value to set
      *
@@ -124,23 +124,23 @@ class PublicationSettings
      */
     public function setPiwikId($piwikId)
     {
-        $this->piwik_id = $piwikId;
+        $this->piwikId = $piwikId;
     
         return $this;
     }
     
     /**
-     * Getter for ip_anonymize
+     * Getter for ipAnonymize
      *
      * @return boolean
      */
     public function getIpAnonymize()
     {
-        return $this->ip_anonymize;
+        return $this->ipAnonymize;
     }
     
     /**
-     * Setter for ip_anonymize
+     * Setter for ipAnonymize
      *
      * @param boolean $ipAnonymize Value to set
      *
@@ -148,11 +148,12 @@ class PublicationSettings
      */
     public function setIpAnonymize($ipAnonymize)
     {
-        $this->ip_anonymize = $ipAnonymize;
+        $this->ipAnonymize = $ipAnonymize;
     
         return $this;
     }
-/**
+    
+    /**
      * Getter for publication
      *
      * @return Newscoop\Entity\Publication

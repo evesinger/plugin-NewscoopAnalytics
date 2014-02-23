@@ -15,13 +15,13 @@ class PiwikPublicationSettingsType extends AbstractType
 	public function buildForm(FormBuilderInterface $builder, array $options)
     {
     	$builder
-            ->add('piwik_url', 'text')
-            ->add('piwik_id', 'integer', array('constraints'=>new Range(array('min'=>1)) ))
+            ->add('piwikUrl', 'text')
+            ->add('piwikId', 'integer', array('constraints'=>new Range(array('min'=>1)) ))
             ->add('type', 'choice', array(
                 'choices'=>array('JavaScript'=>'JavaScript', 'ImageTracker'=>'ImageTracker')))
-            ->add('ip_anonymize', 'checkbox', array(
+            ->add('ipAnonymize', 'checkbox', array(
                 'label'=>'Anonymize'))
-            ->add('piwik_post', 'checkbox', array(
+            ->add('piwikPost', 'checkbox', array(
                 'label'=>'POST'))
             ->add('send', 'submit')
     }
