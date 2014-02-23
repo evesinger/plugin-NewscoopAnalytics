@@ -18,36 +18,50 @@ class LifecycleSubscriber implements EventSubscriberInterface
 {
     private $em;
 
-    public function __construct($em) {
+    public function __construct($em)
+    {
         $this->em = $em;
     }
 
     public function install(GenericEvent $event)
     {
-        
+        $tool = new \Doctrine\ORM\Tools\SchemaTool($this->em);
+        $tool->updateSchema($this->getClasses(), true);
+
+        // Generate proxies for entities
+        $this->em->getProxyFactory()->generateProxyClasses($this->getClasses(), __DIR__ . '/../../../../library/Proxy');
     }
 
     public function update(GenericEvent $event)
     {
+        $tool = new \Doctrine\ORM\Tools\SchemaTool($this->em);
+        $tool->updateSchema($this->getClasses(), true);
+
+        // Generate proxies for entities
+        $this->em->getProxyFactory()->generateProxyClasses($this->getClasses(), __DIR__ . '/../../../../library/Proxy');
        
     }
 
     public function remove(GenericEvent $event)
     {
-        
+        $tool = new \Doctrine\ORM\Tools\SchemaTool($this->em);
+        $tool->dropSchema($this->getClasses(), true);
     }
 
     public static function getSubscribedEvents()
     {
         return array(
-            'plugin.install.newscoop_example_plugin' => array('install', 1),
-            'plugin.update.newscoop_example_plugin' => array('update', 1),
-            'plugin.remove.newscoop_example_plugin' => array('remove', 1),
+            'plugin.install.newscoop_newscoop_plugin_piwik' => array('install', 1),
+            'plugin.update.newscoop_newscoop_piwik_plugin' => array('update', 1),
+            'plugin.remove.newscoop_newscoop_piwik_plugin' => array('remove', 1),
         );
     }
 
-    private function getClasses(){
+    private function getClasses()
+    {
         return array(
+            $this->em->getClassMetadata('Newscoop\PiwikBundle\Entity\PublicationSettings'),
+
         );
     }
 }

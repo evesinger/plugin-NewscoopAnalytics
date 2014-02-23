@@ -28,10 +28,11 @@ class PublicationSettings
     private $id;
 
     /**
-    * @ORM\Column(type="integer", name="publication_id")
-     * @var integer
+     * @ORM\ManyToOne(targetEntity="Newscoop\Entity\Publication")
+     * @ORM\JoinColumn(name="publication_id", referencedColumnName="Id")
+     * @var Newscoop\Entity\Publication
      */
-    private $publication_id;
+    private $publication;
 
     /**
      * @ORM\Column(type="string", name="piwik_url")
@@ -46,10 +47,10 @@ class PublicationSettings
     private $piwik_id;
 
     /**
-     * @ORM\Column(type="boolean", name="ip_obfuscate")
+     * @ORM\Column(type="boolean", name="ip_anonymize")
      * @var boolean
      */
-    private $ip_obfuscate;
+    private $ip_anonymize;
 
     /**
      * @ORM\Column(type="datetime", name="piwik_post")
@@ -124,6 +125,53 @@ class PublicationSettings
     public function setPiwikId($piwikId)
     {
         $this->piwik_id = $piwikId;
+    
+        return $this;
+    }
+    
+    /**
+     * Getter for ip_anonymize
+     *
+     * @return boolean
+     */
+    public function getIpAnonymize()
+    {
+        return $this->ip_anonymize;
+    }
+    
+    /**
+     * Setter for ip_anonymize
+     *
+     * @param boolean $ipAnonymize Value to set
+     *
+     * @return self
+     */
+    public function setIpAnonymize($ipAnonymize)
+    {
+        $this->ip_anonymize = $ipAnonymize;
+    
+        return $this;
+    }
+/**
+     * Getter for publication
+     *
+     * @return Newscoop\Entity\Publication
+     */
+    public function getPublication()
+    {
+        return $this->publication;
+    }
+    
+    /**
+     * Setter for publication
+     *
+     * @param Newscoop\Entity\Publication $publication Value to set
+     *
+     * @return self
+     */
+    public function setPublication(\Newscoop\Entity\Publication $publication)
+    {
+        $this->publication = $publication;
     
         return $this;
     }
