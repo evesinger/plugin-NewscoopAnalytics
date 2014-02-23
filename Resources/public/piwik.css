@@ -57,3 +57,10 @@
 	margin-bottom: -5px;
 	font-weight: bold;
 }
+
+#tabs ul li {
+	width:150px;
+}
+#forms {
+	margin-left: 10px;
+}

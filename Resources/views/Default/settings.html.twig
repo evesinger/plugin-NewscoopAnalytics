@@ -1,0 +1,49 @@
+{% extends 'NewscoopPiwikBundle:Default:admin.html.twig' %}
+
+{% block admin_stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/bundles/newscooppiwik/piwik.css') }}"/>
+{% endblock %}
+
+{% block admin_content %}
+
+{% if error %}
+<div class="row">
+		<div class="alert alert-warning">
+			<p>{{ error }}</p>
+		</div>
+</div>
+{% endif %}
+
+<div id="wrapper">
+	<div id="tabContainer">
+		<div name="tabs" class="col-md-2" id="tabs">
+			<ul class="nav nav-tabs">
+				{% for item in publications %}
+				 <li><a href="{{ path('setting_id', {'id': item.id}) }}"> {{ item.name }} </a></li>
+				{% endfor %}
+			</ul>
+		</div>
+
+		<div name="forms" class="col-md-2" id="forms">
+			{{ form_start(form, { 'attr': { 'class': 'form-horizontal' }}) }}
+			
+			<div class="row">
+			{{ form_widget(form.url, { 'attr': { 'placeholder': 'URL' }}) }}
+			{{ form_errors(form.url) }}
+			</div>
+
+			<div class="row">
+			{{ form_widget(form.id, { 'attr': { 'placeholder': 'Site Id' }}) }}
+			</div>
+
+			<div class="row">
+			{{ form_label(form.send) }}
+			{{ form_widget(form.send, { 'attr': {'class': 'btn btn-default btn-sm'}}) }}
+			</div>
+
+			{{ form_end(form) }}
+		</div>
+	</div>
+</div>
+
+{% endblock %}

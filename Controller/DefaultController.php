@@ -59,6 +59,52 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/admin/piwik_plugin/settings/")
+     * @Route("/admin/piwik_plugin/settings/{id}/", name="setting_id")
+     * @Template()
+     */
+    public function settingsAction(Request $request, $id=null)
+    {
+            
+        // menu
+        $em = $this->container->get('em');
+        $publications = $em->getRepository('Newscoop\Entity\Publication')->findall();
+
+        if ($id === null) {
+                //$status = false;
+                //$statusMessage = "no id found";
+                $error = "no id found";
+                //die('id not found');
+        } else {
+            $publication = $em->getRepository('Newscoop\Entity\Publication')->findOneById($id);
+
+            if($publication === null) {
+                //die('publication not found');
+                $error = "no publication found";
+            }
+        }
+               
+        // content     
+        $form = $this->createFormBuilder()
+            ->add('url', 'text')
+            ->add('id', 'number')
+            ->add('send', 'submit')
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+             $data = $form->getData();
+        }
+
+        return $this->render('NewscoopPiwikBundle:Default:settings.html.twig', array(
+            'publications'=>$publications,
+            'form'=>$form->createView(),
+            'error'=>isset($error) ? $error : '',
+        ));
+    }
+
+    /**
      * @Route("/admin/piwik_plugin")
      * @Template()
      */

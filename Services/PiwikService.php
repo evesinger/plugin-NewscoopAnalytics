@@ -85,8 +85,6 @@ class PiwikService
 
     public function getSiteIds($url, $token)
     {
-            $token = '';
-
             $api = '';
             $api .= 'http://' . $url . '/';
             $api .= '?module=API&method=SitesManager.getAllSitesId';
@@ -104,8 +102,6 @@ class PiwikService
 
     public function getSiteUrls($url, $token)
     {
-            $token = '';
-
             $api = '';
             $api .= 'http://' . $url . '/';
             $api .= '?module=API&method=SitesManager.getAllSites';
@@ -122,8 +118,9 @@ class PiwikService
             $choices = array();
 
             foreach ($content as $row) {
-                $choices[@$row['idsite']] = @$row['idsite'] . ' - ' . @$row['main_url'];
+                $choices[$row['idsite']] = $row['idsite'] . ' - ' . $row['main_url'];
             }
             return $choices;
     }
+
 }
