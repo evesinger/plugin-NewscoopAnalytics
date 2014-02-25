@@ -12,15 +12,19 @@
 	border: 1px solid #cccccc;
 }
 
+.form input[type=text]{
+	width: 150px;
+}
+
 .form button[type=submit], .snippet, .imgtrack {
 	margin-left: 60px;
 }
 
-.negate-row-space {
+.negate-row-space, {
 	margin-top: -10px;
 }
 
-.row {
+.content .row {
 	margin-top: 10px;
 }
 
@@ -29,9 +33,27 @@
 }
 
 .imgtrack {
-	width: 300px; height: 80px;
+	width: 300px; height: 70px;
 }
 
 .left {
 	margin-left:20px;
+}
+
+.pleft {
+	margin-bottom: -5px;
+	margin-right:10px;
+}
+
+#description{
+	width:400px;
+	margin-bottom:-10px;
+	text-align: justify;
+}
+
+.preview {
+	width: 100px;
+	margin-left:10px;
+	margin-bottom: -5px;
+	font-weight: bold;
 }

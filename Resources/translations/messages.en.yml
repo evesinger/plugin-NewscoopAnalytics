@@ -3,4 +3,4 @@ plugin:
   admin:
     title: "Piwik Manager"
     titlecontent: Piwik Manager
-    content: Generate Piwik tracking code by submitting your Piwik-URL and Site Id.
+    content: "Generate Piwik tracking code by submitting your Piwik-URL (no protocol!), User authentication (Token) and Site Id. Implement the code using '{{piwik_block}}{{/piwik_block}}' in your .tpl file."

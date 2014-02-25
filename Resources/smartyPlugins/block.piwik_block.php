@@ -33,28 +33,19 @@ function smarty_block_piwik_block($params, $content, &$smarty, &$repeat)
     $smarty->smarty->loadPlugin('smarty_shared_escape_special_chars');
     $context = $smarty->getTemplateVars('gimme');
 
-    $yaml = new  \Symfony\Component\Yaml\Parser();
-    $file = __DIR__.'/../../config.yml';
-    
-    
-    $value = $yaml->parse(file_get_contents($file));
-    
-    $piwik_url = $value['url'];
-    $idsite = $value['id'];
+    $piwikService = new Newscoop\PiwikBundle\Services\PiwikService;
 
-    $html = '';
-    $html .= '<!-- Piwik -->' . "\n" . '<script type="text/javascript">';
-    $html .= 'var _paq = _paq || [];';
-    $html .= '_paq.push(["trackPageView"]);';
-    $html .= '_paq.push(["enableLinkTracking"]);(function() {';
-    $html .= 'var u=(("https:" == document.location.protocol) ? "https" : "http") + "://'. $piwik_url .'/";';
-    $html .= '_paq.push(["setTrackerUrl", u+"piwik.php"]);';
-    $html .= '_paq.push(["setSiteId","'. $idsite .'"]);';
-    $html .= 'var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";';
-    $html .= 'g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();';
-    $html .= '</script>' . "\n" . '<!-- End Piwik Code -->';
+    $confdata = $piwikService->getConfigData();
+    $url = $confdata['url'];
+    $id = $confdata['id'];
+    $type = $confdata['type'];
+
+    if($type == "JavaScript"){
+
+    $html = $piwikService->getJavascriptTracker($url, $id);
+    }
+    else $html = $piwikService->getImageTracker($url, $id);
 
     return $html;
-
 
 }

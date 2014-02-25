@@ -1,4 +1,30 @@
-{% extends 'NewscoopNewscoopBundle::admin_layout.html.twig' %}
+{% extends 'NewscoopPiwikBundle:Default:admin.html.twig' %}
+{% block admin_stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/bundles/newscooppiwik/piwik.css') }}"/>
+{% endblock %}
 
 {% block admin_content %}
+
+ <ul class="nav nav-tabs">
+	<li><a href="/admin/piwik_plugin">Generate code</a></li>
+	<li class="active"><a> Reporting</a></li>
+</ul>
+
+
+<div class="row">
+
+<p>{{ title }}</p>
+
+<table class="table table-condensed">
+<tr>
+	<th>Keyword</th>
+	<th>Hits</th>
+</tr>
+
+{{ string | raw }}
+
+</table>
+
+</div>
+
 {% endblock %}

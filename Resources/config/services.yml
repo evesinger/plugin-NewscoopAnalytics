@@ -12,3 +12,6 @@ services:
             - { name: kernel.event_listener, event: newscoop_newscoop.menu_configure, method: onMenuConfigure }
         arguments: 
             - @translator
+
+    newscoop_piwik_plugin.piwikservice:
+        class: Newscoop\PiwikBundle\Services\PiwikService
