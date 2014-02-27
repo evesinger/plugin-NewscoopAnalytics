@@ -27,7 +27,7 @@ class PiwikService
 
     public function saveConfigData($url, $id, $token, $type)
     {
-            $file = __DIR__.'/../Resources/config/config.yml';
+            $file = __DIR__.'/../Resources/config/piwikconfig.yml';
 
             if (!is_readable($file) || !is_writable($file)) {
                 return "Warning: The config file is not readable. Please change permissions.";
@@ -47,7 +47,7 @@ class PiwikService
     public function getConfigData()
     {
             $yaml = new  \Symfony\Component\Yaml\Parser();
-            $file = __DIR__.'/../Resources/config/config.yml';
+            $file = __DIR__.'/../Resources/config/piwikconfig.yml';
 
             if (!is_readable($file) || !is_writable($file)) {
                 return "Warning: The config file is not readable. Please change permissions.";
@@ -85,6 +85,8 @@ class PiwikService
 
     public function getSiteIds($url, $token)
     {
+            $token = '';
+
             $api = '';
             $api .= 'http://' . $url . '/';
             $api .= '?module=API&method=SitesManager.getAllSitesId';
@@ -102,6 +104,8 @@ class PiwikService
 
     public function getSiteUrls($url, $token)
     {
+            $token = '';
+
             $api = '';
             $api .= 'http://' . $url . '/';
             $api .= '?module=API&method=SitesManager.getAllSites';
@@ -109,12 +113,17 @@ class PiwikService
 
             $fetched = file_get_contents($api);
             $content = unserialize($fetched);
+
+            if (!$content) {
+                $error = 'Error, no content';
+                return $error;
+            }
+
             $choices = array();
 
             foreach ($content as $row) {
-               $choices[$row['idsite']] = $row['idsite'] . ' - ' . $row['main_url'];
+                $choices[@$row['idsite']] = @$row['idsite'] . ' - ' . @$row['main_url'];
             }
-
             return $choices;
     }
 }
