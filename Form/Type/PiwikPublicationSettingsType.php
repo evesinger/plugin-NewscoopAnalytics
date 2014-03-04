@@ -12,9 +12,9 @@ use Symfony\Component\Validator\Constraints\Range;
 
 class PiwikPublicationSettingsType extends AbstractType
 {
-	public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
-    	$builder
+        $builder
             ->add('piwikUrl', 'text')
             ->add('piwikId', 'integer', array('constraints'=>new Range(array('min'=>1)) ))
             ->add('type', 'choice', array(
@@ -30,7 +30,7 @@ class PiwikPublicationSettingsType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'Newscoop\PiwikBundle\Entity\PublicationSettings',
-        ));
+            ));
     }
 
     public function getName()
