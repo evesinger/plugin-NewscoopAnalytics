@@ -31,11 +31,11 @@ class DefaultController extends Controller
         $publications = $em->getRepository('Newscoop\Entity\Publication')->findall();
 
         if ($id === null) {
-                $error = "No publication ID. Please select a publication.";
+            $error = "No publication ID. Please select a publication.";
         } else {
             $publication = $em->getRepository('Newscoop\Entity\Publication')->findOneById($id);
-
-            if($publication === null) {
+            
+            if ($publication === null) {
                 $error = "Invalid publication ID. Please select a publication.";
             }
         }
