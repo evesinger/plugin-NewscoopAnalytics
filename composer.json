@@ -1,5 +1,5 @@
 {
-    "name": "egraumann/newscoop-plugin-piwik",
+    "name": "newscoop/newscoop-plugin-piwik",
     "description": "Generates and implements Piwik analytics code for Newscoop.",
     "keywords": ["newscoop", "piwik"],
     "version": "0.2",
