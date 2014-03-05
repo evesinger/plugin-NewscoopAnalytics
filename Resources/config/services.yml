@@ -15,3 +15,8 @@ services:
 
     newscoop_piwik_plugin.piwikservice:
         class: Newscoop\PiwikBundle\Services\PiwikService
+
+    newscoop_piwik_plugin.piwikpublicationsettings:
+        class: Newscoop\PiwikBundle\Form\Type\PiwikPublicationSettingsType
+        tags:
+            - { name: form.type, alias: piwikpublicationsettings }

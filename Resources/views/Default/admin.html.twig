@@ -8,62 +8,59 @@
 
 {% block admin_content %}
 
-<ul class="nav nav-tabs">
-	<li class="active"><a>Generate code</a></li>
-</ul>
-
-<div class="row" id="description">
-<p class="left">{{ 'plugin.admin.content'| trans }}</p>
-</div>
-
 {% if error %}
 <div class="row">
-<p>{{ error }}</p>
+		<div class="alert alert-warning">
+			<p>{{ error }}</p>
+		</div>
 </div>
 {% endif %}
 
- <div class="form negate-row-space">
+	<div class="wrapper">
 
-{{ form_start(form, { 'attr': { 'class': 'form-horizontal' }}) }}
-<div class="row">
-{{ form_label(form.url) }}
-{{ form_widget(form.url, { 'attr': { 'placeholder': 'URL' }}) }}
-{{ form_errors(form.url) }}
-</div>
+		<div name="tabs" id="tabs" class="col-md-2">
+				<ul class="nav nav-tabs">
+					{% for item in publications %}
+				 	<li><a href="{{ path('setting_id', {'id': item.id}) }}"> {{ item.name }} </a></li>
+					{% endfor %}
+				</ul>
+		</div>
+	
+	<div class="tab-content">
+		<div id="forms" class="form col-md-2">
+			
+			{{ form_start(form, { 'attr': { 'class': 'form-horizontal' }}) }}
+			
+		<div class="row">
+			{{ form_label(form.piwikUrl, "Piwik URL") }}
+			{{ form_widget(form.piwikUrl, { 'attr': { 'placeholder': 'URL' }}) }}
+		</div>
 
-<div class="row">
-{{ form_label(form.token) }}
-{{ form_widget(form.token, { 'attr': { 'placeholder': 'token_auth'}}) }}
-</div>
+		<div class="row">
+			{{ form_label(form.piwikId, "Site Id") }}
+			{{ form_widget(form.piwikId, { 'attr': { 'placeholder': 'Site Id' }}) }}
+		</div>
 
-<div class="row">
-{{ form_label(form.sitename, "Site Id") }}
-{{ form_widget(form.sitename) }}
-</div>
+		<div class="row">
+			{{ form_label(form.type) }}
+			{{ form_widget(form.type, { 'attr': { 'placeholder': 'Code Type'}}) }}
+		
+		<div class="row">
+			{{ form_label(form.ipAnonymize) }}
+			{{ form_widget(form.ipAnonymize) }}
+		</div>
+		
+		<div class="row">
+			{{ form_label(form.piwikPost) }}
+			{{ form_widget(form.piwikPost) }}
+		</div>
 
-<div class="row">
-{{ form_label(form.type) }}
-{{ form_widget(form.type, { 'attr': { 'placeholder': 'Code Type'}}) }}
-</div>
+		<div class="row">
+			{{ form_label(form.send) }}
+			{{ form_widget(form.send, { 'attr': {'class': 'btn btn-default btn-sm'}}) }}
+		</div>
 
-<div class="row">
-{{ form_label(form.send) }}
-{{ form_widget(form.send, { 'attr': {'class': 'btn btn-default btn-sm'}}) }}
-</div>
-
-{{ form_end(form) }}
-
-<div class="row">
-<p class="preview">Preview</p>
-</div>
-
-<div class="row">
-<textarea class="snippet">{{ snippet }}</textarea>
-</div>
-
-<div class="row">
-<textarea class="imgtrack">{{ imgtrack }}</textarea>
-</div>
-
+			{{ form_end(form) }}
+		</div>
 </div>
 {% endblock %}
