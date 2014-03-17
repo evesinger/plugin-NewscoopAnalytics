@@ -8,42 +8,52 @@
 
 {% block admin_content %}
 
-{% if error %}
-<div class="row">
-		<div class="alert alert-warning">
-			<p>{{ error }}</p>
-		</div>
-</div>
-{% endif %}
+	<div id="description">
+			<p>{{ 'plugin.admin.content'|trans }}</p>
+	</div>
 
-	<div class="wrapper">
+	{% if error %}
+			<div class="alert alert-warning">
+				<p>{{ error }}</p>
+			</div>
+	{% endif %}
 
-		<div name="tabs" id="tabs" class="col-md-2">
+	{% if sent %}
+			<div class="alert alert-success">
+				<p>{{ sent }}</p>
+			</div>
+	{% endif %}
+
+	<div name="tabs" id="tabs" class="col-md-2">
 				<ul class="nav nav-tabs">
 					{% for item in publications %}
-				 	<li><a href="{{ path('setting_id', {'id': item.id}) }}"> {{ item.name }} </a></li>
+				 	<li class="{% if item.id == id %} active {% endif %}"><a href="{{ path('setting_id', {'id': item.id}) }}"> {{ item.name }} (ID {{ item.id }}) </a></li>
 					{% endfor %}
 				</ul>
-		</div>
+	</div>
 	
 	<div class="tab-content">
+
 		<div id="forms" class="form col-md-2">
+
+			<div class="row"><label id="pubid">Publication ID: </label>{{ id }} </div>
 			
 			{{ form_start(form, { 'attr': { 'class': 'form-horizontal' }}) }}
-			
+
 		<div class="row">
-			{{ form_label(form.piwikUrl, "Piwik URL") }}
-			{{ form_widget(form.piwikUrl, { 'attr': { 'placeholder': 'URL' }}) }}
+			{{ form_label(form.piwikUrl, "Piwik URL (no protocol)") }}
+			{{ form_widget(form.piwikUrl, { 'attr': { 'placeholder': 'Please enter valid Piwik URL' }}) }}
 		</div>
 
 		<div class="row">
-			{{ form_label(form.piwikId, "Site Id") }}
-			{{ form_widget(form.piwikId, { 'attr': { 'placeholder': 'Site Id' }}) }}
+			{{ form_label(form.piwikId, "Piwik Site ID") }}
+			{{ form_widget(form.piwikId, { 'attr': { 'placeholder': 'Please enter valid Site ID' , 'min' : '1'}}) }}
 		</div>
 
 		<div class="row">
 			{{ form_label(form.type) }}
 			{{ form_widget(form.type, { 'attr': { 'placeholder': 'Code Type'}}) }}
+		</div>
 		
 		<div class="row">
 			{{ form_label(form.ipAnonymize) }}
@@ -61,6 +71,6 @@
 		</div>
 
 			{{ form_end(form) }}
-		</div>
-</div>
+
+	</div>
 {% endblock %}

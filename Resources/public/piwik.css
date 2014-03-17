@@ -1,27 +1,25 @@
-.form {padding: 10px;}
+.form {
+	padding: 10px;
+}
 
 .form label {
-	width: 60px;
+	width: 150px;
 	text-align: right;
 	margin-right: 10px;
 }
 
-.form input[type=text], .form input[type=number], .snippet, .imgtrack, .form input[type=checkbox], {
+.form input[type=text], .form input[type=number], .snippet, .imgtrack, .form input[type=checkbox] {
 	border-radius: 4px;
 	padding: 5px;
 	border: 1px solid #cccccc;
 }
 
-.form input[type=text]{
-	width: 150px;
+.form input[type=text], .form input[type=number]{
+	width: 200px;
 }
 
 .form button[type=submit], .snippet, .imgtrack {
-	margin-left: 60px;
-}
-
-.form input[type=checkbox]{
-	margin-left: 15px;
+	margin-left: 160px;
 }
 
 .negate-row-space, {
@@ -50,9 +48,9 @@
 }
 
 #description{
-	width:400px;
-	margin-bottom:-10px;
+	width:80%;
 	text-align: justify;
+	padding: 5px;
 }
 
 .preview {
@@ -63,24 +61,23 @@
 }
 
 #tabs {
-	width: 160px;
-	margin-right:10px;
+	width: 200px;
+	padding: 10px;
 }
 
 #tabs ul li {
 	float: none;
+	font-size: 120%;
 }
 
 .tab-content {
 	margin-left: 200px;
-	width: 80%;
-}
-
-.wrapper {
-	width: 100%;
+	font-size: 120%;
 }
 
 #forms {
-	width: 300px;
-	height: 400px;
+	width:100%;
+	height:100%;
+	border-left: 1px solid #cccccc;
+	margin-bottom:10px;
 }

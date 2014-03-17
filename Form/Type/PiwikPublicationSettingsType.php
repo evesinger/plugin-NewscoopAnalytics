@@ -8,7 +8,6 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Symfony\Component\Validator\Constraints\Range;
 
 class PiwikPublicationSettingsType extends AbstractType
 {
@@ -16,14 +15,14 @@ class PiwikPublicationSettingsType extends AbstractType
     {
         $builder
             ->add('piwikUrl', 'text')
-            ->add('piwikId', 'integer', array('constraints'=>new Range(array('min'=>1)) ))
+            ->add('piwikId', 'integer')
             ->add('type', 'choice', array(
-                'choices'=>array('JavaScript'=>'JavaScript', 'ImageTracker'=>'ImageTracker')))
+                'choices'=>array('1'=>'JavaScript', '2'=>'ImageTracker')))
             ->add('ipAnonymize', 'checkbox', array(
-                'label'=>'Anonymize'))
+                'label'=>'Anonymize', 'required' => false))
             ->add('piwikPost', 'checkbox', array(
-                'label'=>'POST'))
-            ->add('send', 'submit')
+                'label'=>'POST', 'required' => false))
+            ->add('send', 'submit');
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

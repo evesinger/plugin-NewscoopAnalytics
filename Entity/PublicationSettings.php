@@ -28,7 +28,7 @@ class PublicationSettings
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Newscoop\Entity\Publication")
+     * @ORM\OneToOne(targetEntity="Newscoop\Entity\Publication")
      * @ORM\JoinColumn(name="publicationId", referencedColumnName="Id")
      * @var Newscoop\Entity\Publication
      */
@@ -50,10 +50,18 @@ class PublicationSettings
      * @ORM\Column(type="boolean", name="ipAnonymize")
      * @var boolean
      */
+
     private $ipAnonymize;
 
     /**
-     * @ORM\Column(type="datetime", name="piwikPost")
+     * @ORM\Column(type="integer", name="type")
+     * @var integer
+     */
+
+    private $Type;
+
+    /**
+     * @ORM\Column(type="boolean", name="piwikPost")
      * @var boolean
      */
     private $piwikPost;
@@ -66,6 +74,30 @@ class PublicationSettings
     public function getPiwikUrl()
     {
         return $this->piwikUrl;
+    }
+
+    /**
+     * Getter for Type
+     *
+     * @return integer
+     */
+    public function getType()
+    {
+        return $this->Type;
+    }
+    
+    /**
+     * Setter for Type
+     *
+     * @param integer $Type Value to set
+     *
+     * @return self
+     */
+    public function setType($Type)
+    {
+        $this->Type = $Type;
+    
+        return $this;
     }
     
     /**

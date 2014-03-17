@@ -33,19 +33,11 @@ function smarty_block_piwik_block($params, $content, &$smarty, &$repeat)
     $smarty->smarty->loadPlugin('smarty_shared_escape_special_chars');
     $context = $smarty->getTemplateVars('gimme');
 
-    $piwikService = new Newscoop\PiwikBundle\Services\PiwikService;
+    $pubId = $context->publication->identifier;
 
-    $confdata = $piwikService->getConfigData();
-    $url = $confdata['url'];
-    $id = $confdata['id'];
-    $type = $confdata['type'];
+    $piwikService = \Zend_Registry::get('container')->getService('newscoop_piwik_plugin.piwikservice');
 
-    if($type == "JavaScript"){
-
-    $html = $piwikService->getJavascriptTracker($url, $id);
-    }
-    else $html = $piwikService->getImageTracker($url, $id);
+    $html = $piwikService->getTracker();
 
     return $html;
-
 }

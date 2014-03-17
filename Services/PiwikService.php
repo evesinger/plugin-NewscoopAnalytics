@@ -8,7 +8,8 @@
 
 namespace Newscoop\PiwikBundle\Services;
 
-use Symfony\Component\Yaml\Dumper;
+use Doctrine\ORM\EntityManager;
+use Newscoop\PiwikBundle\Entity\PublicationSettings;
 
 /**
  * Piwik service
@@ -16,47 +17,44 @@ use Symfony\Component\Yaml\Dumper;
 
 class PiwikService
 {
+    /** @var Doctrine\ORM\EntityManager */
+    protected $em;
+    private $publicationSetting;
+
     /**
-     * @param string $url used as preferred value
-     * @param integer $id used as preferred value
-     * @param string $type used as preferred value
-     * @param string $token used as preferred value
-     *
-     * @return null
-     **/
-
-    public function saveConfigData($url, $id, $token, $type)
+     * @param Doctrine\ORM\EntityManager $em
+     */
+    public function __construct(EntityManager $em)
     {
-            $file = __DIR__.'/../Resources/config/piwikconfig.yml';
-
-            if (!is_readable($file) || !is_writable($file)) {
-                return "Warning: The config file is not readable. Please change permissions.";
-            } else {
-                $data = array(
-                    'url'=>$url, 
-                    'id'=>$id,
-                    'token'=>$token,
-                    'type'=>$type,
-                );
-                $dumper = new Dumper();
-                $yaml = $dumper->dump($data, 2);
-                file_put_contents($file, $yaml);
-            }     
+        $this->em = $em;
+        $request = \Zend_Registry::get('container')->getService('request');
+        //print ladybug_dump($request->attributes->get('_newscoop_publication_metadata'));
+        
+        $requestPub = $request->attributes->get('_newscoop_publication_metadata');
+        $pubId = $requestPub['alias']['publication_id'];
+        $this->publicationSetting = $this->em->getRepository('Newscoop\PiwikBundle\Entity\PublicationSettings')->findOneByPublication($pubId);
     }
 
-    public function getConfigData()
+    public function getTracker()
     {
-            $yaml = new  \Symfony\Component\Yaml\Parser();
-            $file = __DIR__.'/../Resources/config/piwikconfig.yml';
+        $type = $this->publicationSetting->getType();
+        if ($type == 1) {
+            return $this->getJavascriptTracker();
+        } else {
+            return $this->getImageTracker();
+        }
+    }
 
-            if (!is_readable($file) || !is_writable($file)) {
-                return "Warning: The config file is not readable. Please change permissions.";
-            } else {         
-                return $yaml->parse(file_get_contents($file));
-            }
-    } 
+    public function getJavascriptTracker()
+    {
+        //print ladybug_dump($this->publicationSetting);
+        $url = $this->publicationSetting->getPiwikUrl();
+        $id = $this->publicationSetting->getPiwikId();
 
-    public function getJavascriptTracker($url, $id) 
+        return $this->getJavascriptTrackerCode($url, $id);
+    }
+
+    public function getJavascriptTrackerCode($url, $id) 
     {
             $html = '';
             $html .= '<!-- Piwik -->' . "\n" . '<script type="text/javascript">';
@@ -73,7 +71,16 @@ class PiwikService
             return $html;
     }
 
-    public function getImageTracker($url, $id)
+    public function getImageTracker()
+    {
+        //print ladybug_dump($this->publicationSetting);
+        $url = $this->publicationSetting->getPiwikUrl();
+        $id = $this->publicationSetting->getPiwikId();
+
+        return $this->getImageTrackerCode($url, $id);
+    }
+
+    public function getImageTrackerCode($url, $id)
     {
             $imgtrack = '';
             $imgtrack .= '<!-- Piwik Image Tracker -->' . "\n";
@@ -83,7 +90,7 @@ class PiwikService
             return $imgtrack;
     }
 
-    public function getSiteIds($url, $token)
+    /*public function getSiteIds($url, $token)
     {
             $api = '';
             $api .= 'http://' . $url . '/';
@@ -121,6 +128,6 @@ class PiwikService
                 $choices[$row['idsite']] = $row['idsite'] . ' - ' . $row['main_url'];
             }
             return $choices;
-    }
+    }*/
 
 }
