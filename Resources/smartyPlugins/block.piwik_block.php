@@ -33,8 +33,6 @@ function smarty_block_piwik_block($params, $content, &$smarty, &$repeat)
     $smarty->smarty->loadPlugin('smarty_shared_escape_special_chars');
     $context = $smarty->getTemplateVars('gimme');
 
-    $pubId = $context->publication->identifier;
-
     $piwikService = \Zend_Registry::get('container')->getService('newscoop_piwik_plugin.piwikservice');
 
     $html = $piwikService->getTracker();

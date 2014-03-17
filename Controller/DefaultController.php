@@ -30,16 +30,6 @@ class DefaultController extends Controller
     {
         $em = $this->container->get('em');
         
-        
-        //comment this out if no entity changes
-        /*$myEntities = array($em->getClassMetadata('Newscoop\PiwikBundle\Entity\PublicationSettings'));
-
-        $tool = new \Doctrine\ORM\Tools\SchemaTool($em);
-        $tool->updateSchema($myEntities, true);
-
-        $em->getProxyFactory()->generateProxyClasses($myEntities, __DIR__ . '/../../../../library/Proxy');
-        //end */
-        
         // menu
         $publications = $em->getRepository('Newscoop\Entity\Publication')->findall();
         $settings = $em->getRepository('Newscoop\PiwikBundle\Entity\PublicationSettings')->findOneByPublication($id);
@@ -63,7 +53,7 @@ class DefaultController extends Controller
             @$publicationsettings->setPiwikUrl($settings->getPiwikUrl());
             @$publicationsettings->setPiwikId($settings->getPiwikId());
             @$publicationsettings->setPiwikPost($settings->getPiwikPost());
-            @$publicationsettings->setIpAnonymize($settings->getIpAnonymize());
+            @$publicationsettings->setIpAnonymise($settings->getIpAnonymise());
             @$publicationsettings->setType($settings->getType());
         }
     
@@ -77,15 +67,11 @@ class DefaultController extends Controller
                 $data = $form->getData();
 
                 //set piwik url based on form
-                //clear object to overwrite
                 if ($settings !== null) {
                     $em->remove($settings);
                     $em->flush();
-                    $em->persist($publicationsettings);
-                } else {
-                    $em->persist($publicationsettings);
-                }
-
+                }          
+                $em->persist($publicationsettings);
                 $em->flush();
 
                 $sent = "Form sent";
@@ -97,8 +83,8 @@ class DefaultController extends Controller
                     'sent'=>isset($sent) ? $sent : '',
                     'id'=>isset($id) ? $id : '',
                 ));
-            } 
-       }
+            }
+        }
 
         return array(
             'form' => $form,

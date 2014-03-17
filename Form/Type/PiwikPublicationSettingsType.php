@@ -18,8 +18,8 @@ class PiwikPublicationSettingsType extends AbstractType
             ->add('piwikId', 'integer')
             ->add('type', 'choice', array(
                 'choices'=>array('1'=>'JavaScript', '2'=>'ImageTracker')))
-            ->add('ipAnonymize', 'checkbox', array(
-                'label'=>'Anonymize', 'required' => false))
+            ->add('ipAnonymise', 'checkbox', array(
+                'label'=>'Anonymise', 'required' => false))
             ->add('piwikPost', 'checkbox', array(
                 'label'=>'POST', 'required' => false))
             ->add('send', 'submit');

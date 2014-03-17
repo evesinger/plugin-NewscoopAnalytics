@@ -47,18 +47,18 @@ class PublicationSettings
     private $piwikId;
 
     /**
-     * @ORM\Column(type="boolean", name="ipAnonymize")
+     * @ORM\Column(type="boolean", name="ipAnonymise")
      * @var boolean
      */
 
-    private $ipAnonymize;
+    private $ipAnonymise;
 
     /**
      * @ORM\Column(type="integer", name="type")
      * @var integer
      */
 
-    private $Type;
+    private $type;
 
     /**
      * @ORM\Column(type="boolean", name="piwikPost")
@@ -77,25 +77,25 @@ class PublicationSettings
     }
 
     /**
-     * Getter for Type
+     * Getter for type
      *
      * @return integer
      */
     public function getType()
     {
-        return $this->Type;
+        return $this->type;
     }
     
     /**
-     * Setter for Type
+     * Setter for type
      *
-     * @param integer $Type Value to set
+     * @param integer $type Value to set
      *
      * @return self
      */
-    public function setType($Type)
+    public function setType($type)
     {
-        $this->Type = $Type;
+        $this->type = $type;
     
         return $this;
     }
@@ -162,25 +162,25 @@ class PublicationSettings
     }
     
     /**
-     * Getter for ipAnonymize
+     * Getter for ipAnonymise
      *
      * @return boolean
      */
-    public function getIpAnonymize()
+    public function getIpAnonymise()
     {
-        return $this->ipAnonymize;
+        return $this->ipAnonymise;
     }
     
     /**
-     * Setter for ipAnonymize
+     * Setter for ipAnonymise
      *
-     * @param boolean $ipAnonymize Value to set
+     * @param boolean $ipAnonymise Value to set
      *
      * @return self
      */
-    public function setIpAnonymize($ipAnonymize)
+    public function setIpAnonymise($ipAnonymise)
     {
-        $this->ipAnonymize = $ipAnonymize;
+        $this->ipAnonymise = $ipAnonymise;
     
         return $this;
     }
