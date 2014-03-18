@@ -34,6 +34,11 @@ class PiwikService
         $this->publicationSetting = $this->em->getRepository('Newscoop\PiwikBundle\Entity\PublicationSettings')->findOneByPublication($pubId);
     }
 
+    /**
+    * Getter for Tracker
+    *
+    * @return function call
+    */
     public function getTracker()
     {
         $type = $this->publicationSetting->getType();
@@ -44,6 +49,11 @@ class PiwikService
         }
     }
 
+    /**
+    * Getter for JavaScriptTracker
+    *
+    * @return function call
+    */
     public function getJavascriptTracker()
     {
         $url = $this->publicationSetting->getPiwikUrl();
@@ -52,6 +62,13 @@ class PiwikService
         return $this->getJavascriptTrackerCode($url, $id);
     }
 
+    /**
+    * Getter for JavaScriptTrackerCode
+    * @param string     $url
+    * @param integer    $id
+    *
+    * @return string
+    */
     public function getJavascriptTrackerCode($url, $id) 
     {
             $html = '';
@@ -69,6 +86,11 @@ class PiwikService
             return $html;
     }
 
+    /**
+    * Getter for ImageTracker
+    *
+    * @return function call
+    */
     public function getImageTracker()
     {
         $url = $this->publicationSetting->getPiwikUrl();
@@ -77,6 +99,13 @@ class PiwikService
         return $this->getImageTrackerCode($url, $id);
     }
 
+    /**
+    * Getter for ImageTrackerCode
+    * @param string     $url
+    * @param integer    $id
+    *
+    * @return string
+    */
     public function getImageTrackerCode($url, $id)
     {
             $imgtrack = '';
