@@ -50,14 +50,12 @@ class PublicationSettings
      * @ORM\Column(type="boolean", name="ipAnonymise")
      * @var boolean
      */
-
     private $ipAnonymise;
 
     /**
      * @ORM\Column(type="integer", name="type")
      * @var integer
      */
-
     private $type;
 
     /**
