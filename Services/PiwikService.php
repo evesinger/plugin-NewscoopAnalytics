@@ -37,7 +37,7 @@ class PiwikService
     /**
     * Getter for Tracker
     *
-    * @return function call
+    * @return string
     */
     public function getTracker()
     {
@@ -52,7 +52,7 @@ class PiwikService
     /**
     * Getter for JavaScriptTracker
     *
-    * @return function call
+    * @return string
     */
     public function getJavascriptTracker()
     {
@@ -89,7 +89,7 @@ class PiwikService
     /**
     * Getter for ImageTracker
     *
-    * @return function call
+    * @return string
     */
     public function getImageTracker()
     {
