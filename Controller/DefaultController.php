@@ -42,7 +42,7 @@ class DefaultController extends Controller
                 $error = "Invalid publication ID. Please select a publication.";
             }
         }
-       
+
         // content
         $publicationsettings = new PublicationSettings();
 
@@ -80,7 +80,7 @@ class DefaultController extends Controller
                     'publications' => $publications,
                     'form' => $form->createView(),
                     'error' => isset($error) ? $error : '',
-                    'sent'=> isset($sent) ? $sent : '',
+                    'sent' => isset($sent) ? $sent : '',
                     'id' => isset($id) ? $id : '',
                 ));
             }
