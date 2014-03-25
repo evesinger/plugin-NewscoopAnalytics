@@ -28,7 +28,7 @@ class PublicationSettings
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Newscoop\Entity\Publication")
+     * @ORM\OneToOne(targetEntity="Newscoop\Entity\Publication")
      * @ORM\JoinColumn(name="publicationId", referencedColumnName="Id")
      * @var Newscoop\Entity\Publication
      */
@@ -47,13 +47,19 @@ class PublicationSettings
     private $piwikId;
 
     /**
-     * @ORM\Column(type="boolean", name="ipAnonymize")
+     * @ORM\Column(type="boolean", name="ipAnonymise")
      * @var boolean
      */
-    private $ipAnonymize;
+    private $ipAnonymise;
 
     /**
-     * @ORM\Column(type="datetime", name="piwikPost")
+     * @ORM\Column(type="integer", name="type")
+     * @var integer
+     */
+    private $type;
+
+    /**
+     * @ORM\Column(type="boolean", name="piwikPost")
      * @var boolean
      */
     private $piwikPost;
@@ -66,6 +72,30 @@ class PublicationSettings
     public function getPiwikUrl()
     {
         return $this->piwikUrl;
+    }
+
+    /**
+     * Getter for type
+     *
+     * @return integer
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+    
+    /**
+     * Setter for type
+     *
+     * @param integer $type Value to set
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    
+        return $this;
     }
     
     /**
@@ -130,25 +160,25 @@ class PublicationSettings
     }
     
     /**
-     * Getter for ipAnonymize
+     * Getter for ipAnonymise
      *
      * @return boolean
      */
-    public function getIpAnonymize()
+    public function getIpAnonymise()
     {
-        return $this->ipAnonymize;
+        return $this->ipAnonymise;
     }
     
     /**
-     * Setter for ipAnonymize
+     * Setter for ipAnonymise
      *
-     * @param boolean $ipAnonymize Value to set
+     * @param boolean $ipAnonymise Value to set
      *
      * @return self
      */
-    public function setIpAnonymize($ipAnonymize)
+    public function setIpAnonymise($ipAnonymise)
     {
-        $this->ipAnonymize = $ipAnonymize;
+        $this->ipAnonymise = $ipAnonymise;
     
         return $this;
     }
