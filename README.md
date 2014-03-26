@@ -23,6 +23,6 @@ Prerequisits
 - This plugin requires a Piwik installation.
 - Once Piwik is installed, the publication (alias) must be added as website in Piwik.
 
-What you need:
-1. "Piwik URL": URL/Path of your Piwik server
-2. "Site ID": The ID of the website in Piwik
+**What you need**:
+- "Piwik URL": URL/Path of your Piwik server
+- "Site ID": The ID of the website in Piwik
