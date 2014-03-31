@@ -29,10 +29,6 @@ function smarty_block_piwik_block($params, $content, &$smarty, &$repeat)
     if (!isset($content)) {
         return '';
     }
-
-    $smarty->smarty->loadPlugin('smarty_shared_escape_special_chars');
-    $context = $smarty->getTemplateVars('gimme');
-
     $piwikService = \Zend_Registry::get('container')->getService('newscoop_piwik_plugin.piwikservice');
 
     $html = $piwikService->getTracker();

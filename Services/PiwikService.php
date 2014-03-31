@@ -36,16 +36,25 @@ class PiwikService
 
     /**
     * Getter for Tracker
+    * returns empty string if option active is false, returns trackingCode if true
     *
     * @return string
     */
     public function getTracker()
     {
         $type = $this->publicationSetting->getType();
-        if ($type == 1) {
-            return $this->getJavascriptTracker();
+        $active = $this->publicationSetting->getActive();
+
+        if ($active == 1) {  
+            if ($type == 0) {
+                return $this->getJavascriptTracker() .  "\n" . $this->getImageTracker();
+            } elseif ($type == 1) {     
+                return $this->getJavascriptTracker();
+            } else {
+                return $this->getImageTracker();
+            }
         } else {
-            return $this->getImageTracker();
+            return '';
         }
     }
 
@@ -58,23 +67,31 @@ class PiwikService
     {
         $url = $this->publicationSetting->getPiwikUrl();
         $id = $this->publicationSetting->getPiwikId();
+        $post = $this->publicationSetting->getPiwikPost();
 
-        return $this->getJavascriptTrackerCode($url, $id);
+        return $this->getJavascriptTrackerCode($url, $id, $post);
     }
 
     /**
     * Getter for JavaScriptTrackerCode
     * @param string     $url
     * @param integer    $id
+    * @param boolean    $post
     *
     * @return string
     */
-    public function getJavascriptTrackerCode($url, $id) 
+    public function getJavascriptTrackerCode($url, $id, $post) 
     {
+        //add $post
+        if ($post =='1') {
+           $method = '_paq.push(["setRequestMethod", "POST"]);';
+        } else {
+            $method = '';
+        }
             $html = '';
             $html .= '<!-- Piwik -->' . "\n" . '<script type="text/javascript">';
             $html .= 'var _paq = _paq || [];';
-            $html .= '_paq.push(["trackPageView"]);';
+            $html .= '_paq.push(["trackPageView"]);' . $method;
             $html .= '_paq.push(["enableLinkTracking"]);(function() {';
             $html .= 'var u=(("https:" == document.location.protocol) ? "https" : "http") + "://'. $url .'/";';
             $html .= '_paq.push(["setTrackerUrl", u+"piwik.php"]);';
@@ -109,9 +126,9 @@ class PiwikService
     public function getImageTrackerCode($url, $id)
     {
             $imgtrack = '';
-            $imgtrack .= '<!-- Piwik Image Tracker -->' . "\n";
+            $imgtrack .= '<noscript><!-- Piwik Image Tracker -->' . "\n";
             $imgtrack .= '<img src="http://' . $url . '/piwik.php?idsite=' . $id . '&amp;rec=1" style="border:0" alt="" />' . "\n";
-            $imgtrack .= '<!-- End Piwik -->' ;
+            $imgtrack .= '<!-- End Piwik --></noscript>';
 
             return $imgtrack;
     }

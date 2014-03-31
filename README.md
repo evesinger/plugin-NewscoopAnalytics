@@ -20,9 +20,5 @@ Tracking Code implementation
 
 Prerequisits
 -----------------
-- This plugin requires a Piwik installation.
-- Once Piwik is installed, the publication (alias) must be added as website in Piwik.
-
-**What you need**:
-- "Piwik URL": URL/Path of your Piwik server
-- "Site ID": The ID of the website in Piwik
+- This plugin requires a Piwik installation ("Piwik Url").
+- Once Piwik is installed, the publication (alias) must be added as website in Piwik ("Site ID").
