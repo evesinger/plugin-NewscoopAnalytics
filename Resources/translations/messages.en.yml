@@ -1,6 +1,35 @@
 Plugins: Plugins
 plugin:
   admin:
-    title: "Piwik Manager"
-    titlecontent: Piwik Manager
-    content: "Generate Piwik tracking code by submitting your Piwik-URL and Piwik Site Id."
+    title: "Analytics Manager"
+    titlecontent: Analytics Manager
+    content: "Generate Piwik Analytics tracking code by submitting your Piwik-URL and Piwik Site Id."
+    menu-left: "Publications"
+    pub-id: "Publication"
+    piwik-login: "Log into Piwik:"
+    visit-pub: "Visit your publication:"
+    advanced: "Advanced"
+    mask-ip: "Masks IP addresses (currently N/A)."
+    method-post: "Sets the request method to 'POST'."
+    sidebar_title: "How it works"
+    sidebar_ol_li1: Select a publication from the drop down
+    sidebar_ol_li2: Enter your Piwik URL and Piwik Site ID
+    sidebar_ol_li3: Choose additional tracking options
+    sidebar_ol_li4: Click on <b>Send</b>
+    sidebar_ol_li5: Edit template in
+    sidebar_ol_ul_li1: "Paste <b>&#123;&#123;Piwik_block&#125;&#125;&nbsp;&#123;&#123;&#47;Piwik_block&#125;&#125;</b> in the .tpl files before the &#60;&#47;body&#62; tag"
+    sidebar_ol_ul_li2: "Look at the source code of your publication to see the generated code (if option <b>Activate</b> is checked.)"
+    done: "Done!"
+    prerequisites: Requirements
+    prerequisites_ol_li1: Piwik must be installed ("Piwik URL" represents the URL/Path of your Piwik server)
+    prerequisites_ol_li2: Publication must be added as Website ("Site ID") in Piwik
+    more-piwik: "Learn more about Piwik"
+    sidebar-tip: "Tip"
+    sidebar-tip-info: "If you are unsure, use the default settings."
+    theme-manager: "Theme management"
+    code-type: "Code Type"
+    ip-anonym: "Anonymise IP"
+    enter-url: "Please enter valid Piwik URL"
+    enter-id: "Please enter valid Site ID"
+    piwik-url: "Piwik URL (no protocol)"
+    activate: "Activate"

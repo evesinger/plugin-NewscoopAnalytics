@@ -36,16 +36,24 @@ class DefaultController extends Controller
         $alias = $em->getRepository('Newscoop\Entity\Aliases')->findOneById($aliasid);
 
         if ($id === null) {
-            $error = "Please select a publication from the list.";
+            $error = $this->get('translator')->trans('Please select a publication from the list.');
         } else {
             $publication = $em->getRepository('Newscoop\Entity\Publication')->findOneById($id);
         }
 
         if (isset($alias)) {
             $aliasUrl = $alias->getName();
-            $testAlias = 'http://' . $aliasUrl;
+            $pattern = '/^(http|ftp|https)/';
+            $test = preg_match($pattern, $aliasUrl);
+            
+            if($test =='0'){
+                $testAlias = 'http://' . $aliasUrl;
+            } else {
+                $testAlias = $aliasUrl;
+            }
+
             if (!filter_var($testAlias, FILTER_VALIDATE_URL)) {
-                $valid = "Url is not valid";
+                $valid = $this->get('translator')->trans('Url is not valid.');
             }
         }
 
@@ -54,7 +62,6 @@ class DefaultController extends Controller
 
         if (isset($publication)) {
             $publicationsettings->setPublication($publication);
-
             if ($settings !== null) {
                 $publicationsettings->setPiwikUrl($settings->getPiwikUrl());
                 $publicationsettings->setPiwikId($settings->getPiwikId());
@@ -62,24 +69,23 @@ class DefaultController extends Controller
                 $publicationsettings->setIpAnonymise($settings->getIpAnonymise());
                 $publicationsettings->setType($settings->getType());
                 $publicationsettings->setActive($settings->getActive());
+            } else {
+                $publicationsettings->setActive($active = true);
             }
-        }   
+        }
         $form = $this->createForm(new PiwikPublicationSettingsType(), $publicationsettings);
 
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
-
             if ($form->isValid()) {
-                $data = $form->getData();
-
-               if ($settings !== null) {
+                if ($settings !== null) {
                     $em->remove($settings);
                     $em->flush();
-                }          
+                }            
                 $em->persist($publicationsettings);
                 $em->flush();
 
-                $sent = "Settings saved. You can now use Piwik in your templates.";
+                $sent = $this->get('translator')->trans('Settings saved. You can now use Piwik in your templates.');
                 
                 return $this->render('NewscoopPiwikBundle:Default:admin.html.twig', array(
                     'publications' => $publications,

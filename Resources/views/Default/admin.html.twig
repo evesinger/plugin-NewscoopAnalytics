@@ -12,18 +12,18 @@
 </div>
 
 <div id="tabs" class="col-md-3">
-	<h4>Publications <span class="glyphicon glyphicon-list"></h4>
-	<ul class="nav nav-tabs">
+	<h4>{{ 'plugin.admin.menu-left'|trans }} <span class="glyphicon glyphicon-list"></h4>
+		<ul class="nav nav-tabs">
 		{% for item in publications %}
-		<li class="{% if item.id == id %} active {% endif %}"><a href="{{ path('setting_id', {'id': item.id}) }}"> {{ item.name }} {% if item.id == id %}<span class="glyphicon glyphicon-folder-open">{% endif %}</a></li>
+			<li class="{% if item.id == id %} active {% endif %}"><a href="{{ path('setting_id', {'id': item.id}) }}"> {{ item.name }} {% if item.id == id %}<span class="glyphicon glyphicon-folder-open">{% endif %}</a></li>
 		{% endfor %}
-	</ul>
+		</ul>
 </div>
 	
 <div class="tab-content">
 	<div id="forms" class="form col-md-3">
 	{% if error %}
-	<p class="alert alert-warning">{{ error }}</p>
+		<p class="alert alert-warning">{{ error }}</p>
 	{% endif %}
 
 	{% if id %}
@@ -32,49 +32,51 @@
 		{% endif %}
 
 		<div class="row">
-			<label id="pubid">Publication: </label>{{ alias.name }} (ID: {{ id }} )
-		</div>
+			<label id="pubid">{{ 'plugin.admin.pub-id'|trans }} </label>{{ alias.name }} (ID: {{ id }} )
+		</div>		
 		{{ form_start(form, { 'attr': { 'class': 'form-horizontal' }}) }}
 
 		<div class="row">
-		{{ form_label(form.piwikUrl, "Piwik URL (no protocol)") }}
-		{{ form_widget(form.piwikUrl, { 'attr': { 'placeholder': 'Please enter valid Piwik URL' }}) }}
+			{{ form_label(form.piwikUrl, 'plugin.admin.piwik-url'|trans) }}
+			{{ form_widget(form.piwikUrl, { 'attr': { 'placeholder': 'plugin.admin.enter-url'|trans }}) }}
+			{{ form_errors(form.piwikUrl) }}
 		</div>
 
 		<div class="row">
-		{{ form_label(form.piwikId, "Piwik Site ID") }}
-		{{ form_widget(form.piwikId, { 'attr': { 'placeholder': 'Please enter valid Site ID' , 'min' : '1'}}) }}
+			{{ form_label(form.piwikId, "Piwik Site ID") }}
+			{{ form_widget(form.piwikId, { 'attr': { 'min' : '1', 'placeholder': 'plugin.admin.enter-id'|trans }}) }}
+			{{ form_errors(form.piwikId) }}
 		</div>
 
 		<div class="row">
-		{{ form_label(form.active) }}
-		{{ form_widget(form.active) }}
+			{{ form_label(form.active, 'plugin.admin.activate'|trans) }}
+			{{ form_widget(form.active) }}
 		</div>
 
 		<div class="bs-callout-info">
-			{% if form.vars.value.piwikUrl %}<p>Log into Piwik: <a href="http://{{ form.vars.value.piwikUrl }}" target="_blank">{{ form.vars.value.piwikUrl }} <span class="glyphicon glyphicon-log-in"></a></p>
-			{% endif %}
+		{% if form.vars.value.piwikUrl %}<p>{{ 'plugin.admin.piwik-login'|trans }} <a href="http://{{ form.vars.value.piwikUrl }}" target="_blank">{{ form.vars.value.piwikUrl }} <span class="glyphicon glyphicon-log-in"></a></p>
+		{% endif %}
 
-			{% if valid == false %}
-			<p>Visit your publication: <a href="http://{{ alias.name }}" target="_blank">{{ alias.name }} <span class="glyphicon glyphicon-new-window"></a></p>
-			{% endif %}
+		{% if valid == false %}
+			<p>{{ 'plugin.admin.visit-pub'|trans }} <a href="http://{{ alias.name }}" target="_blank">{{ alias.name }} <span class="glyphicon glyphicon-new-window"></a></p>
+		{% endif %}
 		</div>
 
 		<div id="advanced">
-			<h4> Advanced <span class="glyphicon glyphicon-cog"></h4>
+			<h4> {{ 'plugin.admin.advanced'|trans }} <span class="glyphicon glyphicon-cog"></h4>
 			<div class="row">
-			{{ form_label(form.type, "Code Type") }}
-			{{ form_widget(form.type, { 'attr': { 'placeholder': 'Code Type' }}) }}
+			{{ form_label(form.type, 'plugin.admin.code-type' | trans) }}
+			{{ form_widget(form.type) }}
 			</div>
 
 			<div class="row" id="piwikpublicationsettings_ipAnonymise">
-			{{ form_label(form.ipAnonymise, "IP Anonymise") }}
-			{{ form_widget(form.ipAnonymise) }}&nbsp;Masks IP addresses (currently N/A).
+			{{ form_label(form.ipAnonymise, 'plugin.admin.ip-anonym' | trans) }}
+			{{ form_widget(form.ipAnonymise) }}&nbsp;{{ 'plugin.admin.mask-ip'|trans }}
 			</div>
 		
 			<div class="row">
 			{{ form_label(form.piwikPost) }}
-			{{ form_widget(form.piwikPost) }}&nbsp;Sets the request method to "POST".
+			{{ form_widget(form.piwikPost) }}&nbsp;{{ 'plugin.admin.method-post'|trans }}
 			</div>
 		</div>
 
@@ -87,32 +89,31 @@
 	</div>
 
 	<div id="infobox" class="col-md-3 bs-callout-info">
-		{% block admin_sidebartitle %}<h4>{{ 'plugin.admin.sidebartitle'|trans }}</h4>{% endblock %} 
+		<h4>{{ 'plugin.admin.sidebar_title'|trans }}</h4>
 		<ol>
-			<li> Select a publication from the drop down </li>
-			<li> Enter your <b>Piwik URL</b> and Piwik <b>Site ID</b> </li>
-			<li> Choose additional tracking options </li>
-			<li> Click on <b>Send</b> </li>
-			<li> Edit template in <a href="/admin/themes" target="_blank">Theme management <span class="glyphicon glyphicon-log-in"></a></li>
+			<li>{{ 'plugin.admin.sidebar_ol_li1'|trans }}</li>
+			<li>{{ 'plugin.admin.sidebar_ol_li2'|trans }}</li>
+			<li>{{ 'plugin.admin.sidebar_ol_li3'|trans }}</li>
+			<li>{{ 'plugin.admin.sidebar_ol_li4'|trans|raw }} </li>
+			<li>{{ 'plugin.admin.sidebar_ol_li5'|trans }} <a href="/admin/themes" target="_blank">{{ 'plugin.admin.theme-manager'|trans }} <span class="glyphicon glyphicon-log-in"></a></li>
 				<ul>
-					<li> Paste <b>&#123;&#123;Piwik_block&#125;&#125;&nbsp;&#123;&#123;&#47;Piwik_block&#125;&#125;</b> in the .tpl files before the &#60;&#47;body&#62; tag</li>
-					<li> Look at the source code of your publication to see the generated code (if option <b>Activate</b> is checked.)</li>
+					<li>{{ 'plugin.admin.sidebar_ol_ul_li1'|trans|raw }}</li>
+					<li>{{ 'plugin.admin.sidebar_ol_ul_li2'|trans|raw }}</li>
 				</ul>
-			<li> DONE!</li>
+			<li> {{ 'plugin.admin.done'|trans }}</li>
 		</ol>
 
-		<h5>Prerequisites <span class="glyphicon glyphicon-flag"></h5>
+		<h5>{{ 'plugin.admin.prerequisites'|trans }} <span class="glyphicon glyphicon-flag"></h5>
 		<ol>
-			<li>Piwik must be installed ("Piwik URL" represents the URL/path of your Piwik server)</li>
-			<li>Publication must be added as website ("Site ID") in Piwik </li>
+			<li>{{ 'plugin.admin.prerequisites_ol_li1'|trans }}</li>
+			<li>{{ 'plugin.admin.prerequisites_ol_li2'|trans }}</li>
 		</ol>
-
-		<p><a href="http://piwik.org/" class="btn btn-info btn-lg btn-block" target="_blank" title="http://piwik.org/">Learn more about Piwik <span class="glyphicon glyphicon-new-window"></a></p>
+		<p><a href="http://piwik.org/" class="btn btn-info btn-lg btn-block" target="_blank" title="http://piwik.org/">{{ 'plugin.admin.more-piwik'|trans }} <span class="glyphicon glyphicon-new-window"></a></p>
 
 		<div class="panel panel-info">
-			<div class="panel-body"><span class="glyphicon glyphicon-tag">&nbsp;Tip</div>
-			<div class="panel-footer">If you are unsure, use the default settings.</div>
-		</div>
+			<div class="panel-body"><span class="glyphicon glyphicon-tag"> {{ 'plugin.admin.sidebar-tip'|trans }}</div>
+			<div class="panel-footer">{{ 'plugin.admin.sidebar-tip-info'|trans }}</div>
+		</div>	
 	</div>
 </div>
 {% endblock %}

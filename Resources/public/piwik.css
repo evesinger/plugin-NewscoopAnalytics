@@ -148,3 +148,13 @@ ul {
   -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
           transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
+
+#piwikUrl ul, #piwikId ul {
+	width: 300px;
+	margin: 5px 0;
+	margin-left: 160px;
+}
+#piwikUrl ul li, #piwikId ul li {
+	color: #c43c35;
+	padding: 5px;
+}
