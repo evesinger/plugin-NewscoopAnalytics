@@ -15,7 +15,7 @@
 }
 
 .form input[type=text], .form input[type=number]{
-	width: 200px;
+	width: 60%;
 }
 
 .form button[type=submit], .snippet, .imgtrack {
@@ -30,44 +30,26 @@
 	margin-top: 10px;
 }
 
-.snippet {
-	width: 300px; height: 150px;
-}
-
-.imgtrack {
-	width: 300px; height: 70px;
-}
-
-.left {
-	margin-left:20px;
-}
-
-.pleft {
-	margin-bottom: -5px;
-	margin-right:10px;
-}
-
 #description{
 	width:80%;
 	text-align: justify;
 	padding: 5px;
 }
 
-.preview {
-	width: 100px;
-	margin-left:10px;
-	margin-bottom: -5px;
-	font-weight: bold;
-}
-
-#tabs {
+.content #tabs {
 	width: 200px;
 	padding: 10px;
 }
 
-#tabs ul li {
+.content #tabs ul li{
 	float: none;
 	font-size: 120%;
+}
+
+.content #tabs h4 {
+	font-size: 14px;
+	color: #6D6B73;
+	margin:0 0 15px 10px;
 }
 
 .tab-content {
@@ -76,8 +58,103 @@
 }
 
 #forms {
-	width:100%;
 	height:100%;
+	min-height: 500px;
+	width:55%;
+	margin: 0 10px;
+	padding: 10px 20px;
 	border-left: 1px solid #cccccc;
-	margin-bottom:10px;
+}
+
+#infobox {
+	height: 100%;
+	width: 40%;
+	padding: 10px;
+}
+
+li {
+	display: list-item;
+}
+
+ol {
+	list-style-type:decimal;
+	font-size: 14px;
+	margin: 10px 0;
+}
+
+ul {
+	list-style-type:square;
+}
+
+#piwikpublicationsettings_ipAnonymise {
+	color: #BDBDBD;
+}
+
+.bs-callout-info {
+	border-left: 3px solid #EEEEEE;
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #F4F8FA;
+    border-color: #5BC0DE;
+}
+
+.bs-callout-info h4{
+    color: #5BC0DE;
+
+}
+
+.panel .panel-info{
+	border-radius: 4px;
+	border-color: #BCE8F1;
+}
+
+.panel-body, .panel-body span {
+	background-color: #D9EDF7;
+	color: #31708F;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.panel-footer {
+	background-color: #ffffff;
+	font-size: 14px;
+}
+
+#advanced {
+	margin: 10px 0;
+	border-top: 1px solid #cccccc;
+	border-bottom: 1px solid #cccccc;
+	padding: 10px 0;
+}
+
+#advanced h4{
+	font-size: 14px;
+	color: #6D6B73;
+	margin:10px 0;
+}
+
+.form select {
+  width: 60%;
+  height: 30px;
+  padding: 6px 12px;
+  line-height: 1.428571429;
+  color: #555555;
+  vertical-align: middle;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+          transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+#piwikUrl ul, #piwikId ul {
+	width: 300px;
+	margin: 5px 0;
+	margin-left: 160px;
+}
+#piwikUrl ul li, #piwikId ul li {
+	color: #c43c35;
+	padding: 5px;
 }

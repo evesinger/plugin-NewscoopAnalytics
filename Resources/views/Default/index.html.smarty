@@ -1,7 +1,0 @@
-<h1>Piwik test page</h1>
-
-<p>Implemented using { { piwik_block } } { { /piwik_block } } </p>
-<p>Look at the page source code to see the implemented tracking</p>
-
-{{ piwik_block }} {{ /piwik_block }}
-

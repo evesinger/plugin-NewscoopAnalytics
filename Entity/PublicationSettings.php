@@ -47,6 +47,12 @@ class PublicationSettings
     private $piwikId;
 
     /**
+     * @ORM\Column(type="boolean", name="active")
+     * @var boolean
+     */
+    private $active;
+
+    /**
      * @ORM\Column(type="boolean", name="ipAnonymise")
      * @var boolean
      */
@@ -158,6 +164,30 @@ class PublicationSettings
     
         return $this;
     }
+
+     /**
+     * Getter for active
+     *
+     * @return boolean
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+    
+    /**
+     * Setter for active
+     *
+     * @param boolean $active Value to set
+     *
+     * @return self
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+    
+        return $this;
+    }
     
     /**
      * Getter for ipAnonymise
@@ -205,6 +235,5 @@ class PublicationSettings
         $this->publication = $publication;
     
         return $this;
-    }
-    
+    }  
 }

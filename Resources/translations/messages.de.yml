@@ -1,0 +1,38 @@
+Plugins: Plugins
+plugin:
+  admin:
+    title: "Analytics Manager"
+    titlecontent: Analytics Manager
+    content: "Generieren Sie Piwik Analytics tracking code durch Eingabe der Piwik-URL und Piwik Site Id."
+    menu-left: "Publikationen"
+    pub-id: "Publikation"
+    piwik-login: "Zum Piwik Login:"
+    visit-pub: "Publikation ansehen:"
+    advanced: "Erweitert"
+    mask-ip: "IP Addresse maskieren (zzt. nicht verfügbar)."
+    method-post: "Ändert die Request Methode zu 'POST'."
+    sidebar_title: "So funktioniert's"
+    sidebar_ol_li1: Wählen Sie eine Publikation aus der Liste.
+    sidebar_ol_li2: Geben Sie die Piwik URL und Piwik Site ID ein
+    sidebar_ol_li3: Aktivieren Sie zusätzliche Tracking Optionen
+    sidebar_ol_li4: Klicken Sie auf <b>Senden</b>
+    sidebar_ol_li5: Ändern Sie das Template in
+    sidebar_ol_ul_li1: "Fügen Sie <b>&#123;&#123;Piwik_block&#125;&#125;&nbsp;&#123;&#123;&#47;Piwik_block&#125;&#125;</b> in die .tpl Dateien vor dem &#60;&#47;body&#62; tag ein."
+    sidebar_ol_ul_li2: "Öffnen Sie den Source Code ihrer Internetseite, um sich den generierten Code anzeigen zu lassen (nur wenn Option <b>Aktivieren</b> gewählt ist.)"
+    done: "Fertig!"
+    prerequisites: Vorraussetzungen
+    prerequisites_ol_li1: Piwik muss installiert sein ("Piwik URL" steht für die URL/ den Path des Piwik Servers)
+    prerequisites_ol_li2: Publikation muss als Website ("Site ID") in Piwik angelegt worden sein.
+    more-piwik: "Mehr über Piwik erfahren"
+    sidebar-tip: "Tipp"
+    sidebar-tip-info: "Unsicher? Nutzen Sie die standardmäßig aktivierten Einstellungen."
+    theme-manager: "Designvorlagen-Verwaltung"
+    code-type: "Code Typ"
+    ip-anonym: "IP anoymisieren"
+    enter-url: "Bitte gültige Piwik URL eingeben"
+    enter-id: "Bitte gültige Site ID eingeben"
+    piwik-url: "Piwik URL (ohne Protokoll)"
+    activate: "Aktivieren"
+Please select a publication from the list. : "Bitte wählen Sie eine Publikation aus der Liste."
+URL is not valid. : "Keine gültige URL."
+Settings saved. You can now use Piwik in your templates. : "Einstellungen wurden gespeichert. Sie können nun Piwik in Ihren Templates verwenden."

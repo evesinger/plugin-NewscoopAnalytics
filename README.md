@@ -18,11 +18,7 @@ Tracking Code implementation
 -----------------------------
 - Include smarty block {{piwik_block}}{{/piwik_block}} in the template files (Theme manager)
 
-Prerequisits
+Requirements
 -----------------
-- This plugin requires a Piwik installation.
-- Once Piwik is installed, the publication (alias) must be added as website in Piwik.
-
-What you need:
-1. "Piwik URL": URL/Path of your Piwik server
-2. "Site ID": The ID of the website in Piwik
+- This plugin requires a Piwik installation ("Piwik URL").
+- Once Piwik is installed, the publication must be added as website in Piwik ("Site ID").
