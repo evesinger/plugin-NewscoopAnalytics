@@ -34,5 +34,5 @@ plugin:
     piwik-url: "Piwik URL (ohne Protokoll)"
     activate: "Aktivieren"
 Please select a publication from the list. : "Bitte wählen Sie eine Publikation aus der Liste."
-Url is not valid. : "Keine gültige URL."
+URL is not valid. : "Keine gültige URL."
 Settings saved. You can now use Piwik in your templates. : "Einstellungen wurden gespeichert. Sie können nun Piwik in Ihren Templates verwenden."

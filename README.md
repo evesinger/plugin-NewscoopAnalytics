@@ -20,5 +20,5 @@ Tracking Code implementation
 
 Requirements
 -----------------
-- This plugin requires a Piwik installation ("Piwik Url").
+- This plugin requires a Piwik installation ("Piwik URL").
 - Once Piwik is installed, the publication must be added as website in Piwik ("Site ID").

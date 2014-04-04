@@ -54,7 +54,8 @@
 		</div>
 
 		<div class="bs-callout-info">
-		{% if form.vars.value.piwikUrl %}<p>{{ 'plugin.admin.piwik-login'|trans }} <a href="http://{{ form.vars.value.piwikUrl }}" target="_blank">{{ form.vars.value.piwikUrl }} <span class="glyphicon glyphicon-log-in"></a></p>
+		{% if form.vars.value.piwikUrl %}
+		<p>{{ 'plugin.admin.piwik-login'|trans }} <a href="http://{{ form.vars.value.piwikUrl }}" target="_blank">{{ form.vars.value.piwikUrl }} <span class="glyphicon glyphicon-log-in"></a></p>
 		{% endif %}
 
 		{% if valid == false %}

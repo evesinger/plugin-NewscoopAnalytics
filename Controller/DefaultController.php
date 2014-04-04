@@ -53,7 +53,7 @@ class DefaultController extends Controller
             }
 
             if (!filter_var($testAlias, FILTER_VALIDATE_URL)) {
-                $valid = $this->get('translator')->trans('Url is not valid.');
+                $valid = $this->get('translator')->trans('URL is not valid.');
             }
         }
 
