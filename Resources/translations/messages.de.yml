@@ -3,7 +3,7 @@ plugin:
   admin:
     title: "Analytics Manager"
     titlecontent: Analytics Manager
-    content: "Generieren Sie Piwik Analytics tracking code durch Eingabe der Piwik-URL und Piwik Site Id."
+    content: "Generieren Sie Analytics tracking code und erweitern Sie damit Ihre Templates."
     menu-left: "Publikationen"
     pub-id: "Publikation"
     piwik-login: "Zum Piwik Login:"
@@ -17,22 +17,40 @@ plugin:
     sidebar_ol_li3: Aktivieren Sie zusätzliche Tracking Optionen
     sidebar_ol_li4: Klicken Sie auf <b>Senden</b>
     sidebar_ol_li5: Ändern Sie das Template in
-    sidebar_ol_ul_li1: "Fügen Sie <b>&#123;&#123;Piwik_block&#125;&#125;&nbsp;&#123;&#123;&#47;Piwik_block&#125;&#125;</b> in die .tpl Dateien vor dem &#60;&#47;body&#62; tag ein."
+    sidebar_ol_ul_li1: "Fügen Sie <b>&#123;&#123;analytics_block&#125;&#125;&nbsp;&#123;&#123;&#47;analytics_block&#125;&#125;</b> in die .tpl Dateien vor dem &#60;&#47;body&#62; tag ein."
     sidebar_ol_ul_li2: "Öffnen Sie den Source Code ihrer Internetseite, um sich den generierten Code anzeigen zu lassen (nur wenn Option <b>Aktivieren</b> gewählt ist.)"
     done: "Fertig!"
-    prerequisites: Vorraussetzungen
+    prerequisites: Voraussetzungen
     prerequisites_ol_li1: Piwik muss installiert sein ("Piwik URL" steht für die URL/ den Path des Piwik Servers)
     prerequisites_ol_li2: Publikation muss als Website ("Site ID") in Piwik angelegt worden sein.
     more-piwik: "Mehr über Piwik erfahren"
     sidebar-tip: "Tipp"
-    sidebar-tip-info: "Unsicher? Nutzen Sie die standardmäßig aktivierten Einstellungen."
+    sidebar-tip-info-default: "Unsicher? Nutzen Sie die standardmäßig aktivierten Einstellungen."
+    sidebar-tip-info-implement: "Wir empfehlen, den Smarty Block Tag in die Datei footer.tpl nach dem &#60;&#47;footer&#62; Tag einzufügen."
+    sidebar-tip-info-code-type: "Sie haben die Möglichkeit, den zuvor gewählten Code Typ direkt im Template zu ändern. Nutzen Sie dazu bei der Block Tag Implementation den Parameter <i>tracker</i>. Beispiel: &#123;&#123;analytics_block tracker=&#34;2&#34;&#125;&#125;&#123;&#123;&#47;analytics_block&#125;&#125;"
     theme-manager: "Designvorlagen-Verwaltung"
     code-type: "Code Typ"
     ip-anonym: "IP anoymisieren"
     enter-url: "Bitte gültige Piwik URL eingeben"
     enter-id: "Bitte gültige Site ID eingeben"
+    enter-token: "Bitte authToken eingeben"
     piwik-url: "Piwik URL (ohne Protokoll)"
     activate: "Aktivieren"
-Please select a publication from the list. : "Bitte wählen Sie eine Publikation aus der Liste."
-URL is not valid. : "Keine gültige URL."
-Settings saved. You can now use Piwik in your templates. : "Einstellungen wurden gespeichert. Sie können nun Piwik in Ihren Templates verwenden."
+    helptext-ol-li1: "Wo finde ich die Piwik URL und Site ID?"
+    helptext-ol-li2: "Was sind die erweiterten Einstellungen?"
+    helptext-ol-li3: "Wo kann ich den generierten Code sehen?"
+    helptext-ol-li4: "Was macht der generierte Code?"
+    close: schließen
+    help: Hilfe
+    more-piwik: "Mehr über Piwik"
+    piwik-url-id-description: "Die Piwik URL steht für die URL/ den Path des Piwik Servers. Die Site ID repräsentiert eine Website in Piwik und muss von einem Piwik Administrator angelegt werden. Sie finden die Site ID in den Piwik-Einstellungen unter Websites Management. Lassen Sie uns wissen, falls Sie nicht wissen, wie Sie diese Einstellungen finden."
+    js-description: "<i>JavaScript</i> ist die standardmäßige und vielleicht umfangreichste Tracking Methode von Piwik."
+    imgtrack-description: "<i>ImageTracker</i> ist eine alternative Tracking Option, wenn kein JavaScript zur Verfügung steht oder genutzt werden soll."
+    change-code-type-description: "<b>Hinweis:</b> Sie haben die Möglichkeit, den zuvor gewählten Code Typ direkt im Template mit dem Parameter <i>tracker</i> zu ändern. <i>tracker=&#34;1&#34;</i> erzeugt JavaScript code, <i>tracker=&#34;2&#34;</i> den ImageTracker code. Ist kein Parameter gesetzt, wird die Standardeinstellung (JavaScript + ImageTracker) generiert."
+    ip-anonym-description: "Standardmäßig werden beim Tracken die Besucher- IP Addresse (ipv4 oder ipv6 Format) in der Analytics Datenbank gespeichert. Um sicherzustellen, dass nicht die volle IP-Adresse gespeichert wird, stellt Piwik die Option zur automatischen IP Anonymisierung bereit. Leider gibt es diese Option zzt. nicht als Option für den Tracking Code, ist aber seitens Piwik in aktiver Entwicklungsplanung. Falls Sie diese Option schon jetzt aktivieren möchten, nutzen Sie bitte die Einstellungen im Piwik Interface."
+    post-description: "Ist diese Option aktiviert, wird eine zusätzliche Code option aktiviert, so dass der HTTP request zum Sammeln der Tracking Daten mit der Methode 'POST' verschickt wird (Standard ist 'GET'). Um die POST Methode nutzen zu können, müssen Piwik Host und Website Host übereinstimmen (d.h. Piwik muss in der selben Domain installiert sein wie die zu trackende Website)."
+    activate-description: "Ist die Option <i>Aktivieren</i> gewählt, können Sie den generierten Code im Quelltext der Publikations-Website sehen."
+    code-description: "Der tracking Code generiert einen HTTP Request mit den gesammelten Nutzerdaten und sendet ihn an die Piwik Server zur Verarbeitung. Basierend auf diesen Daten, können Sie dann die unterschiedlichsten Berichte erstellen, um wertvolle Informationen über das Nutzerverhalten Ihrer Website-Benutzer zu erhalten. Berichte sind zzt. nur im Piwik Interface verfügbar, werden aber in einer späteren Version dieses Plugins auch Reporting-Funktionalität innerhalb von Newscoop bereitstellen."
+    Please select a publication from the list. : "Bitte wählen Sie eine Publikation aus der Liste."
+    URL is not valid. : "Keine gültige URL."
+    Settings saved. You can now use Piwik in your templates. : "Einstellungen wurden gespeichert. Sie können nun Piwik in Ihren Templates verwenden."

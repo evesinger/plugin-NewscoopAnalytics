@@ -1,0 +1,9 @@
+$(document).ready(function(){
+	$("#helptext").hide();
+	$("#helplink").click(function(){
+    	$("#helptext").toggle();
+    });
+	$("#hide").click(function(){
+    	$("#helptext").hide();
+    });
+});

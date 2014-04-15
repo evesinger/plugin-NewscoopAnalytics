@@ -3,7 +3,7 @@ plugin:
   admin:
     title: "Analytics Manager"
     titlecontent: Analytics Manager
-    content: "Generate Piwik Analytics tracking code by submitting your Piwik-URL and Piwik Site Id."
+    content: "Generate Analytics tracking code and add it to your templates."
     menu-left: "Publications"
     pub-id: "Publication"
     piwik-login: "Log into Piwik:"
@@ -17,7 +17,7 @@ plugin:
     sidebar_ol_li3: Choose additional tracking options
     sidebar_ol_li4: Click on <b>Send</b>
     sidebar_ol_li5: Edit template in
-    sidebar_ol_ul_li1: "Paste <b>&#123;&#123;Piwik_block&#125;&#125;&nbsp;&#123;&#123;&#47;Piwik_block&#125;&#125;</b> in the .tpl files before the &#60;&#47;body&#62; tag"
+    sidebar_ol_ul_li1: "Paste <b>&#123;&#123;analytics_block&#125;&#125;&nbsp;&#123;&#123;&#47;analytics_block&#125;&#125;</b> in the .tpl files before the &#60;&#47;body&#62; tag"
     sidebar_ol_ul_li2: "Look at the source code of your publication to see the generated code (if option <b>Activate</b> is checked.)"
     done: "Done!"
     prerequisites: Requirements
@@ -25,11 +25,29 @@ plugin:
     prerequisites_ol_li2: Publication must be added as Website ("Site ID") in Piwik
     more-piwik: "Learn more about Piwik"
     sidebar-tip: "Tip"
-    sidebar-tip-info: "If you are unsure, use the default settings."
+    sidebar-tip-info-default: "If you are unsure, use the default settings."
+    sidebar-tip-info-implement: "We recommend to put the Smarty block tag in the footer.tpl after the &#60;&#47;footer&#62; tag."
+    sidebar-tip-info-code-type: "You can change the code type in the template using the parameter <i>tracker</i>. Example: &#123;&#123;analytics_block tracker=&#34;2&#34;&#125;&#125;&#123;&#123;&#47;analytics_block&#125;&#125;"
     theme-manager: "Theme management"
     code-type: "Code Type"
     ip-anonym: "Anonymise IP"
     enter-url: "Please enter valid Piwik URL"
     enter-id: "Please enter valid Site ID"
+    enter-token: "Please enter authToken"
     piwik-url: "Piwik URL (no protocol)"
     activate: "Activate"
+    helptext-ol-li1: "Where can I find the Piwik URL and Site ID?"
+    helptext-ol-li2: "What are the advanced settings?"
+    helptext-ol-li3: "Where can I see the generated code?"
+    helptext-ol-li4: "What is the generated code good for?"
+    close: close
+    help: Help
+    more-piwik: "More on Piwik"
+    piwik-url-id-description: "The Piwik URL represents the Path to your Piwik installation. The Site ID represents a website in Piwik and must be added by the Piwik admin. You can find the site ID in Piwik's Websites Management. If you do not know those settings, let us know."
+    js-description: "<i>JavaScript</i> is the default and probably most powerful tracking method of Piwik."
+    imgtrack-description: "<i>ImageTracker</i> is an alternative tracking option, if no JavaScript is enabled or available."
+    change-code-type-description: "<b>Note:</b> You can change the code type in the template using the parameter <i>tracker</i>. <i>tracker=&#34;1&#34;</i> will generate JavaScript-only code, <i>tracker=&#34;2&#34;</i> ImageTracker-only. If not set, it will return the default combination."
+    ip-anonym-description: "By default, Piwik stores the visitor IP address (ipv4 or ipv6 format) in the database for each new visitor. To ensure that you do not store the visitor IP, Piwik provides the option for automatic IP anonymization. Unfortunately, this option is not available as extension for the tracking code but in planning. If you wish to use it right now, please do so in the Piwik admin settings."
+    post-description: "When activated, this will add an option to the tracking code so that the request method is 'POST' (the default is 'GET'). To use the POST request method, the Piwik host must be the same as the tracked website host (i.e.Piwik installed in the same domain as your tracked website)."
+    activate-description: "If you have the option <i>Activate</i> checked, you can visit the publication's website and look at the source code. At the end of the page you should find the Piwik code."
+    code-description: "The code will generate a HTTP request with your collected visitor's data that is sent to the Piwik server for processing. Based on this collected data, reports can be retrieved to gain valuable information about how the visitor of your publication behave. Reports can be displayed in the Piwik interface. We will provide reporting functionality within Newscoop in some later version of this plugin."

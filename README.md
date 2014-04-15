@@ -9,10 +9,16 @@ Features
 - Presents a form to submit basic and advanced settings that are required to generate Piwik tracking code for each publication
 - Based on those settings, tracking Code for Piwik Analytics is generated (code options: JavaScript and NoScript ImageTracker, JS only or ImageTracker only)
 - Provides the option to visit selected publication and links to Piwik login page (if URL provided)
+- You can overwrite the tracking Code type by using Smarty block function parameters
+
+Languages
+------------
+- English
+- German
 
 Installation
 -------------
-- Install plugin through our Newscoop Plugin System (via admin/plugins or $php application/console plugins:install)
+- from newscoop root directory: $php application/console plugins:install newscoop/newscoop-plugin-piwik
 
 Tracking Code implementation
 -----------------------------

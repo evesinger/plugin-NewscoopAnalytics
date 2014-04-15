@@ -29,9 +29,19 @@ function smarty_block_piwik_block($params, $content, &$smarty, &$repeat)
     if (!isset($content)) {
         return '';
     }
+	$tracker = $params['tracker'];
+
     $piwikService = \Zend_Registry::get('container')->getService('newscoop_piwik_plugin.piwikservice');
 
-    $html = $piwikService->getTracker();
+    if (isset($tracker)) {
+    	if ($tracker == 1){
+    		$html = $piwikService->getJavascriptTracker();
+    	} elseif ($tracker == 2) {
+    		$html = $piwikService->getImageTracker();
+    	}
+    } else {
+    	 $html = $piwikService->getTracker();
+    }
 
     return $html;
 }

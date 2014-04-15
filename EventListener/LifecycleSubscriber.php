@@ -52,8 +52,8 @@ class LifecycleSubscriber implements EventSubscriberInterface
     {
         return array(
             'plugin.install.newscoop_newscoop_plugin_piwik' => array('install', 1),
-            'plugin.update.newscoop_newscoop_piwik_plugin' => array('update', 1),
-            'plugin.remove.newscoop_newscoop_piwik_plugin' => array('remove', 1),
+            'plugin.update.newscoop_newscoop_plugin_piwik' => array('update', 1),
+            'plugin.remove.newscoop_newscoop_plugin_piwik' => array('remove', 1),
         );
     }
 
