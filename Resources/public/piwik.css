@@ -72,17 +72,21 @@
 	padding: 10px;
 }
 
-li {
+#tabs ul {
+	list-style-type:none;
+}
+
+.content li {
 	display: list-item;
 }
 
-ol {
+.content ol {
 	list-style-type:decimal;
 	font-size: 14px;
 	margin: 10px 0;
 }
 
-ul {
+.content ul {
 	list-style-type:square;
 }
 

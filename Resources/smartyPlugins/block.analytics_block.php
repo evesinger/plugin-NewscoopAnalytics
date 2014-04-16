@@ -7,11 +7,11 @@
  */
 
 /**
- * Newscoop piwik_block block plugin
+ * Newscoop analytics_block block plugin
  *
  * Type:     block
- * Name:     piwik_block
- * Purpose:  Generates the piwik tracking data for a page
+ * Name:     analytics_block
+ * Purpose:  Generates the analytics tracking data for a page
  *
  * @param string
  *     $params
@@ -24,7 +24,7 @@
  *
  */
 
-function smarty_block_piwik_block($params, $content, &$smarty, &$repeat)
+function smarty_block_analytics_block($params, $content, &$smarty, &$repeat)
 {
     if (!isset($content)) {
         return '';
@@ -33,8 +33,8 @@ function smarty_block_piwik_block($params, $content, &$smarty, &$repeat)
 
     $piwikService = \Zend_Registry::get('container')->getService('newscoop_piwik_plugin.piwikservice');
 
-    if (isset($tracker)) {
-    	if ($tracker == 1){
+    if(isset($tracker)) {
+    	if ($tracker == 1) {
     		$html = $piwikService->getJavascriptTracker();
     	} elseif ($tracker == 2) {
     		$html = $piwikService->getImageTracker();
