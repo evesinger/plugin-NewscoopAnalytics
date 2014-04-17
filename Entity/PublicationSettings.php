@@ -1,12 +1,12 @@
 <?php
 /**
- * @package Newscoop\PiwikBundle
+ * @package Newscoop\AnalyticsBundle
  * @author Evelyn Graumann <evelyn.graumann@sourcefabric.org>
  * @copyright 2014 Sourcefabric o.p.s.
  * @license http://www.gnu.org/licenses/gpl-3.0.txt
  */
 
-namespace Newscoop\PiwikBundle\Entity;
+namespace Newscoop\AnalyticsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -15,7 +15,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * PublicationSettings entity
  *
  * @ORM\Entity()
- * @ORM\Table(name="plugin_piwik_publicationsettings")
+ * @ORM\Table(name="plugin_analytics_publicationsettings")
  */
 class PublicationSettings
 {
@@ -41,10 +41,16 @@ class PublicationSettings
     private $piwikUrl;
 
     /**
-     * @ORM\Column(type="integer", name="piwikId")
+     * @ORM\Column(type="string", name="authToken")
+     * @var string
+     */
+    private $authToken;
+
+    /**
+     * @ORM\Column(type="integer", name="siteId")
      * @var integer
      */
-    private $piwikId;
+    private $siteId;
 
     /**
      * @ORM\Column(type="boolean", name="active")
@@ -59,10 +65,10 @@ class PublicationSettings
     private $ipAnonymise;
 
     /**
-     * @ORM\Column(type="integer", name="type")
+     * @ORM\Column(type="integer", name="trackingType")
      * @var integer
      */
-    private $type;
+    private $trackingType;
 
     /**
      * @ORM\Column(type="boolean", name="piwikPost")
@@ -81,30 +87,6 @@ class PublicationSettings
     }
 
     /**
-     * Getter for type
-     *
-     * @return integer
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-    
-    /**
-     * Setter for type
-     *
-     * @param integer $type Value to set
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-    
-        return $this;
-    }
-    
-    /**
      * Setter for piwikUrl
      *
      * @param string $piwikUrl Value to set
@@ -117,6 +99,55 @@ class PublicationSettings
     
         return $this;
     }
+
+    /**
+     * Getter for trackingType
+     *
+     * @return integer
+     */
+    public function getTrackingType()
+    {
+        return $this->trackingType;
+    }
+    
+    /**
+     * Setter for trackingType
+     *
+     * @param integer $trackingType Value to set
+     *
+     * @return self
+     */
+    public function setTrackingType($trackingType)
+    {
+        $this->trackingType = $trackingType;
+    
+        return $this;
+    }
+    
+    /**
+     * Getter for authToken
+     *
+     * @return string
+     */
+    public function getAuthToken()
+    {
+        return $this->authToken;
+    }
+    
+    /**
+     * Setter for authToken
+     *
+     * @param string $authToken Value to set
+     *
+     * @return self
+     */
+    public function setAuthToken($authToken)
+    {
+        $this->authToken = $authToken;
+    
+        return $this;
+    }
+
     /**
      * Getter for piwikPost
      *
@@ -142,25 +173,25 @@ class PublicationSettings
     }
 
     /**
-     * Getter for piwikId
+     * Getter for siteId
      *
      * @return integer
      */
-    public function getPiwikId()
+    public function getSiteId()
     {
-        return $this->piwikId;
+        return $this->siteId;
     }
     
     /**
-     * Setter for piwikId
+     * Setter for siteId
      *
-     * @param integer $piwikId Value to set
+     * @param integer $siteId Value to set
      *
      * @return self
      */
-    public function setPiwikId($piwikId)
+    public function setSiteId($siteId)
     {
-        $this->piwikId = $piwikId;
+        $this->siteId = $siteId;
     
         return $this;
     }

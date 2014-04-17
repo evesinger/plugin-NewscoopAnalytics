@@ -1,12 +1,12 @@
 <?php
 /**
- * @package Newscoop\PiwikBundle
+ * @package Newscoop\AnalyticsBundle
  * @author Evelyn Graumann <evelyn.graumann@sourcefabric.org>
  * @copyright 2014 Sourcefabric o.p.s.
  * @license http://www.gnu.org/licenses/gpl-3.0.txt
  */
 
-namespace Newscoop\PiwikBundle\EventListener;
+namespace Newscoop\AnalyticsBundle\EventListener;
 
 use Newscoop\NewscoopBundle\Event\ConfigureMenuEvent;
 use Symfony\Component\Translation\Translator;
@@ -32,7 +32,7 @@ class ConfigureMenuListener
 
         $menu[$this->translator->trans('Plugins')]->addChild(
         	$this->translator->trans('plugin.admin.titlecontent'), 
-        	array('uri' => $event->getRouter()->generate('newscoop_piwik_default_admin'))
+        	array('uri' => $event->getRouter()->generate('newscoop_analytics_default_admin'))
         );
     }
 }

@@ -8,13 +8,13 @@
 	margin-right: 10px;
 }
 
-.form input[type=text], .form input[type=number], .snippet, .imgtrack, .form input[type=checkbox] {
+.form input[type=text], .form input[type=number], .snippet, .imgtrack, .form input[type=checkbox], .form input[type=password] {
 	border-radius: 4px;
 	padding: 5px;
 	border: 1px solid #cccccc;
 }
 
-.form input[type=text], .form input[type=number]{
+.form input[type=text], .form input[type=number], .form input[type=password] {
 	width: 60%;
 }
 
@@ -161,4 +161,16 @@
 #piwikUrl ul li, #piwikId ul li {
 	color: #c43c35;
 	padding: 5px;
+}
+
+#help {
+	text-align: right;
+}
+
+#helptext .panel-footer ol {
+	font-weight: bold;
+}
+
+#helptext .panel-footer ol ul {
+	font-weight: normal;
 }

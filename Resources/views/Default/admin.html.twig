@@ -1,14 +1,14 @@
 {% extends 'NewscoopNewscoopBundle::admin_layout.html.twig' %}
 
 {% block admin_title %}{{ 'plugin.admin.title'|trans }}{% endblock %}
-{% block admin_page_title_content %}{{ 'plugin.admin.titlecontent'|trans }}<span class="glyphicon glyphicon-signal"> {% endblock %}
+{% block admin_page_title_content %}{{ 'plugin.admin.titlecontent'|trans }}<span class="glyphicon glyphicon-signal">{% endblock %}
 
 {% block admin_stylesheets %}
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/bundles/newscooppiwik/piwik.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/bundles/newscoopanalytics/analytics.css') }}"/>
 {% endblock %}
 
 {% block admin_scripts %}
-    <script type="text/javascript" src="{{ asset('public/bundles/newscooppiwik/piwik.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/bundles/newscoopanalytics/analytics.js') }}"></script>
 {% endblock %}
 
 {% block admin_content %}
@@ -38,9 +38,9 @@
 
 		<div class="row">
 			<label id="pubid">{{ 'plugin.admin.pub-id'|trans }} </label>{{ alias.name }} (ID: {{ id }} )
-		</div>		
-		{{ form_start(form, { 'attr': { 'class': 'form-horizontal' }}) }}
+		</div>
 
+		{{ form_start(form, { 'attr': { 'class': 'form-horizontal' }}) }}
 		<div class="row">
 			{{ form_label(form.piwikUrl, 'plugin.admin.piwik-url'|trans) }}
 			{{ form_widget(form.piwikUrl, { 'attr': { 'placeholder': 'plugin.admin.enter-url'|trans }}) }}
@@ -48,9 +48,15 @@
 		</div>
 
 		<div class="row">
-			{{ form_label(form.piwikId, "Piwik Site ID") }}
-			{{ form_widget(form.piwikId, { 'attr': { 'min' : '1', 'placeholder': 'plugin.admin.enter-id'|trans }}) }}<span class="glyphicon glyphicon-folder-open">
-			{{ form_errors(form.piwikId) }}
+			{{ form_label(form.authToken) }}
+			{{ form_widget(form.authToken, { 'attr': {'placeholder': 'plugin.admin.enter-token'|trans }}) }}
+			{{ form_errors(form.authToken) }}
+		</div>
+
+		<div class="row">
+			{{ form_label(form.siteId, "Site ID") }}
+			{{ form_widget(form.siteId, { 'attr': { 'min' : '1', 'placeholder': 'plugin.admin.enter-id'|trans }}) }}
+			{{ form_errors(form.siteId) }}
 		</div>
 
 		<div class="row">
@@ -87,6 +93,7 @@
 								<ul>
 									<li>{{'plugin.admin.js-description'|trans|raw}} <a href="http://developer.piwik.org/api-reference/tracking-javascript" target="_blank">{{'plugin.admin.more-piwik'|trans}} <span class="glyphicon glyphicon-new-window"></a></li>
 									<li> {{'plugin.admin.imgtrack-description'|trans|raw}} <a href="http://piwik.org/faq/how-to/#faq_176" target="_blank">{{'plugin.admin.more-piwik'|trans}} <span class="glyphicon glyphicon-new-window"></a></li>
+									<li>{{'plugin.admin.google-description'|trans|raw}} <a href="https://developers.google.com/analytics/devguides/collection/" target="_blank">{{'plugin.admin.more-google'|trans}} <span class="glyphicon glyphicon-new-window"></a></li>
 									<li> {{'plugin.admin.change-code-type-description'|trans|raw}}</li>
 								</ul>
 							</li>
@@ -112,11 +119,11 @@
 		<div id="advanced">
 			<h4> {{ 'plugin.admin.advanced'|trans }} <span class="glyphicon glyphicon-cog"></h4>
 			<div class="row">
-			{{ form_label(form.type, 'plugin.admin.code-type' | trans) }}
-			{{ form_widget(form.type) }}
+			{{ form_label(form.trackingType, 'plugin.admin.code-type' | trans) }}
+			{{ form_widget(form.trackingType) }}
 			</div>
 
-			<div class="row" id="piwikpublicationsettings_ipAnonymise">
+			<div class="row" id="analyticspublicationsettings_ipAnonymise">
 			{{ form_label(form.ipAnonymise, 'plugin.admin.ip-anonym' | trans) }}
 			{{ form_widget(form.ipAnonymise) }}&nbsp;{{ 'plugin.admin.mask-ip'|trans }}
 			</div>
@@ -156,6 +163,7 @@
 			<li>{{ 'plugin.admin.prerequisites_ol_li2'|trans }}</li>
 		</ol>
 		<p><a href="http://piwik.org/" class="btn btn-info btn-lg btn-block" target="_blank" title="http://piwik.org/">{{ 'plugin.admin.more-piwik'|trans }} <span class="glyphicon glyphicon-new-window"></a></p>
+		<p><a href="http://www.google.com/analytics/" class="btn btn-success btn-lg btn-block" target="_blank" title="http://www.google.com/analytics/">{{ 'plugin.admin.more-google'|trans }} <span class="glyphicon glyphicon-new-window"></a></p>
 
 		<div class="panel panel-info">
 			<div class="panel-body"><span class="glyphicon glyphicon-tag"> {{ 'plugin.admin.sidebar-tip'|trans }}</div>
