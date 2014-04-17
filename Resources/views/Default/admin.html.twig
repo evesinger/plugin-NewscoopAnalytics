@@ -1,9 +1,14 @@
 {% extends 'NewscoopNewscoopBundle::admin_layout.html.twig' %}
 
 {% block admin_title %}{{ 'plugin.admin.title'|trans }}{% endblock %}
-{% block admin_page_title_content %}{{ 'plugin.admin.titlecontent'|trans }} {% endblock %}
+{% block admin_page_title_content %}{{ 'plugin.admin.titlecontent'|trans }}<span class="glyphicon glyphicon-signal"> {% endblock %}
+
 {% block admin_stylesheets %}
     <link rel="stylesheet" type="text/css" href="{{ asset('public/bundles/newscooppiwik/piwik.css') }}"/>
+{% endblock %}
+
+{% block admin_scripts %}
+    <script type="text/javascript" src="{{ asset('public/bundles/newscooppiwik/piwik.js') }}"></script>
 {% endblock %}
 
 {% block admin_content %}
@@ -44,7 +49,7 @@
 
 		<div class="row">
 			{{ form_label(form.piwikId, "Piwik Site ID") }}
-			{{ form_widget(form.piwikId, { 'attr': { 'min' : '1', 'placeholder': 'plugin.admin.enter-id'|trans }}) }}
+			{{ form_widget(form.piwikId, { 'attr': { 'min' : '1', 'placeholder': 'plugin.admin.enter-id'|trans }}) }}<span class="glyphicon glyphicon-folder-open">
 			{{ form_errors(form.piwikId) }}
 		</div>
 
@@ -61,6 +66,47 @@
 		{% if valid == false %}
 			<p>{{ 'plugin.admin.visit-pub'|trans }} <a href="http://{{ alias.name }}" target="_blank">{{ alias.name }} <span class="glyphicon glyphicon-new-window"></a></p>
 		{% endif %}
+		</div>
+
+		<div id="help">
+			<p><a href="#" id="helplink" class="text-info">{{'plugin.admin.help'|trans}}&nbsp;<span class="glyphicon glyphicon-question-sign"></a></p>
+		</div>
+		
+		<div class="panel panel-info" id="helptext">
+			<div class="panel-body">FAQ</div>
+			<div class="panel-footer">
+				<p align="right"><a id="hide">{{'plugin.admin.close'|trans}} <span class="glyphicon glyphicon-minus-sign"></a></p>
+				<ol>
+					<li>{{'plugin.admin.helptext-ol-li1'|trans}}</li>
+						<ul>
+							<li>{{'plugin.admin.piwik-url-id-description'|trans}}</li>
+						</ul>
+					<li>{{'plugin.admin.helptext-ol-li2'|trans}}</li>
+						<ul>
+							<li><i>{{'plugin.admin.code-type'|trans}}</i>:
+								<ul>
+									<li>{{'plugin.admin.js-description'|trans|raw}} <a href="http://developer.piwik.org/api-reference/tracking-javascript" target="_blank">{{'plugin.admin.more-piwik'|trans}} <span class="glyphicon glyphicon-new-window"></a></li>
+									<li> {{'plugin.admin.imgtrack-description'|trans|raw}} <a href="http://piwik.org/faq/how-to/#faq_176" target="_blank">{{'plugin.admin.more-piwik'|trans}} <span class="glyphicon glyphicon-new-window"></a></li>
+									<li> {{'plugin.admin.change-code-type-description'|trans|raw}}</li>
+								</ul>
+							</li>
+							<li><i>{{'plugin.admin.ip-anonym'|trans}}</i>:
+								<ul>
+									<li>{{'plugin.admin.ip-anonym-description'|trans|raw}} <a href="http://piwik.org/docs/privacy/#step-1-automatically-anonymize-visitor-ips" target="_blank">{{'plugin.admin.more-piwik'|trans}} <span class="glyphicon glyphicon-new-window"></a></li>
+								</ul>
+							</li>
+							<li><i>POST</i>: {{'plugin.admin.post-description'|trans|raw}}</li>
+						</ul>
+					<li>{{'plugin.admin.helptext-ol-li3'|trans}}</li>
+					 	<ul>
+					 		<li>{{'plugin.admin.activate-description'|trans|raw}}</li>
+						</ul>
+					<li>{{'plugin.admin.helptext-ol-li4'|trans}}</li>
+						<ul>
+							<li>{{'plugin.admin.code-description'|trans}}</li>
+						</ul>
+				</ol>
+			</div>
 		</div>
 
 		<div id="advanced">
@@ -113,7 +159,13 @@
 
 		<div class="panel panel-info">
 			<div class="panel-body"><span class="glyphicon glyphicon-tag"> {{ 'plugin.admin.sidebar-tip'|trans }}</div>
-			<div class="panel-footer">{{ 'plugin.admin.sidebar-tip-info'|trans }}</div>
+			<div class="panel-footer">
+				<ul>
+					<li>{{ 'plugin.admin.sidebar-tip-info-default'|trans }}</li>
+					<li>{{ 'plugin.admin.sidebar-tip-info-implement'|trans|raw}}</li>
+					<li>{{ 'plugin.admin.sidebar-tip-info-code-type'|trans|raw}}</li>
+				</ul>
+			</div>
 		</div>	
 	</div>
 </div>
