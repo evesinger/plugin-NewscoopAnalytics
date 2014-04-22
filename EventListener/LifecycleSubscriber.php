@@ -1,12 +1,12 @@
 <?php
 /**
- * @package Newscoop\PiwikBundle
+ * @package Newscoop\AnalyticsBundle
  * @author Evelyn Graumann <evelyn.graumann@sourcefabric.org>
  * @copyright 2014 Sourcefabric o.p.s.
  * @license http://www.gnu.org/licenses/gpl-3.0.txt
  */
 
-namespace Newscoop\PiwikBundle\EventListener;
+namespace Newscoop\AnalyticsBundle\EventListener;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Newscoop\EventDispatcher\Events\GenericEvent;
@@ -51,16 +51,16 @@ class LifecycleSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
-            'plugin.install.newscoop_newscoop_plugin_piwik' => array('install', 1),
-            'plugin.update.newscoop_newscoop_plugin_piwik' => array('update', 1),
-            'plugin.remove.newscoop_newscoop_plugin_piwik' => array('remove', 1),
+            'plugin.install.newscoop_newscoop_plugin_analytics' => array('install', 1),
+            'plugin.update.newscoop_newscoop_plugin_analytics' => array('update', 1),
+            'plugin.remove.newscoop_newscoop_plugin_analytics' => array('remove', 1),
         );
     }
 
     private function getClasses()
     {
         return array(
-            $this->em->getClassMetadata('Newscoop\PiwikBundle\Entity\PublicationSettings'),
+            $this->em->getClassMetadata('Newscoop\AnalyticsBundle\Entity\PublicationSettings'),
 
         );
     }

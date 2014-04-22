@@ -1,6 +1,6 @@
 <?php
 /**
- * @package Piwik plugin
+ * @package Analytics plugin
  * @author Evelyn Graumann
  * @copyright 2014 Sourcefabric o.p.s.
  * @license http://www.gnu.org/licenses/gpl-3.0.txt
@@ -31,16 +31,28 @@ function smarty_block_analytics_block($params, $content, &$smarty, &$repeat)
     }
 	$tracker = $params['tracker'];
 
-    $piwikService = \Zend_Registry::get('container')->getService('newscoop_piwik_plugin.piwikservice');
+    $analyticsService = \Zend_Registry::get('container')->getService('newscoop_analytics_plugin.analyticsservice');
 
     if(isset($tracker)) {
-    	if ($tracker == 1) {
-    		$html = $piwikService->getJavascriptTracker();
-    	} elseif ($tracker == 2) {
-    		$html = $piwikService->getImageTracker();
-    	}
+    	switch ($tracker) {
+                case 0:
+                    return $analyticsService->getJavascriptTracker() .  "\n" . $analyticsService->getImageTracker();
+                    break;        
+                case 1:
+                    return $analyticsService->getJavascriptTracker();
+                    break;
+                case 2:
+                    return $analyticsService->getImageTracker();
+                    break;
+                case 3:
+                    return $analyticsService->getGoogleUniversalTrackerCode($url, $id);
+                    break;
+                case 4:
+                    return $analyticsService->getGoogleClassicTrackerCode($id);
+                    break;
+        }
     } else {
-    	 $html = $piwikService->getTracker();
+    	 $html = $analyticsService->getTracker();
     }
 
     return $html;

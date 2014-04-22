@@ -13,7 +13,7 @@ plugin:
     method-post: "Sets the request method to 'POST'."
     sidebar_title: "How it works"
     sidebar_ol_li1: Select a publication from the drop down
-    sidebar_ol_li2: Enter your Piwik URL and Piwik Site ID
+    sidebar_ol_li2: Enter your Piwik URL and Site ID
     sidebar_ol_li3: Choose additional tracking options
     sidebar_ol_li4: Click on <b>Send</b>
     sidebar_ol_li5: Edit template in
@@ -21,12 +21,12 @@ plugin:
     sidebar_ol_ul_li2: "Look at the source code of your publication to see the generated code (if option <b>Activate</b> is checked.)"
     done: "Done!"
     prerequisites: Requirements
-    prerequisites_ol_li1: Piwik must be installed ("Piwik URL" represents the URL/Path of your Piwik server)
-    prerequisites_ol_li2: Publication must be added as Website ("Site ID") in Piwik
+    prerequisites_ol_li1: Piwik must be installed. ("Piwik URL" represents the URL/Path of your Piwik server)
+    prerequisites_ol_li2: Publication must be added as Website ("Site ID") in Piwik or Google Analytics
     more-piwik: "Learn more about Piwik"
     sidebar-tip: "Tip"
     sidebar-tip-info-default: "If you are unsure, use the default settings."
-    sidebar-tip-info-implement: "We recommend to put the Smarty block tag in the footer.tpl after the &#60;&#47;footer&#62; tag."
+    sidebar-tip-info-implement: "We recommend to put the analytics block tag for Piwik in the footer.tpl after the &#60;&#47;footer&#62; tag."
     sidebar-tip-info-code-type: "You can change the code type in the template using the parameter <i>tracker</i>. Example: &#123;&#123;analytics_block tracker=&#34;2&#34;&#125;&#125;&#123;&#123;&#47;analytics_block&#125;&#125;"
     theme-manager: "Theme management"
     code-type: "Code Type"
@@ -43,11 +43,13 @@ plugin:
     close: close
     help: Help
     more-piwik: "More on Piwik"
+    more-google: "More on Google Analytics"
     piwik-url-id-description: "The Piwik URL represents the Path to your Piwik installation. The Site ID represents a website in Piwik and must be added by the Piwik admin. You can find the site ID in Piwik's Websites Management. If you do not know those settings, let us know."
     js-description: "<i>JavaScript</i> is the default and probably most powerful tracking method of Piwik."
     imgtrack-description: "<i>ImageTracker</i> is an alternative tracking option, if no JavaScript is enabled or available."
-    change-code-type-description: "<b>Note:</b> You can change the code type in the template using the parameter <i>tracker</i>. <i>tracker=&#34;1&#34;</i> will generate JavaScript-only code, <i>tracker=&#34;2&#34;</i> ImageTracker-only. If not set, it will return the default combination."
+    change-code-type-description: "<b>Note:</b> You can change the code type in the template using the parameter <i>tracker</i>. <i>tracker=&#34;1&#34;</i> will generate Piwik JavaScript-only code, <i>tracker=&#34;2&#34;</i> Piwik ImageTracker-only. <i>tracker=&#34;3&#34;</i> and <i>tracker=&#34;4&#34;</i> will generate Google Analytics code. If not set, it will return the default combination."
     ip-anonym-description: "By default, Piwik stores the visitor IP address (ipv4 or ipv6 format) in the database for each new visitor. To ensure that you do not store the visitor IP, Piwik provides the option for automatic IP anonymization. Unfortunately, this option is not available as extension for the tracking code but in planning. If you wish to use it right now, please do so in the Piwik admin settings."
     post-description: "When activated, this will add an option to the tracking code so that the request method is 'POST' (the default is 'GET'). To use the POST request method, the Piwik host must be the same as the tracked website host (i.e.Piwik installed in the same domain as your tracked website)."
-    activate-description: "If you have the option <i>Activate</i> checked, you can visit the publication's website and look at the source code. At the end of the page you should find the Piwik code."
-    code-description: "The code will generate a HTTP request with your collected visitor's data that is sent to the Piwik server for processing. Based on this collected data, reports can be retrieved to gain valuable information about how the visitor of your publication behave. Reports can be displayed in the Piwik interface. We will provide reporting functionality within Newscoop in some later version of this plugin."
+    activate-description: "If you have the option <i>Activate</i> checked, you can visit the publication's website and look at the source code. Depending on where you pasted the tag in the templates, you should find the analytics code at the top or bottom of the page."
+    code-description: "The code will generate a HTTP request with your collected visitor's data that is sent to the Piwik or Google server for processing. Based on this collected data, reports can be retrieved to gain valuable information about how the visitor of your publication behave. Reports can be displayed in the Piwik or Google Analytics admin interface. We will provide reporting functionality within Newscoop in some later version of this plugin."
+    google-description: "Google provides 2 JavaScript code options for web tracking: <i>Classic Analytics</i> (ga.js) and the more recent <i>Universal Analytics</i> (analytics.js)."

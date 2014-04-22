@@ -1,24 +1,24 @@
 services:
-    newscoop_piwik_plugin.lifecyclesubscriber:
-        class: Newscoop\PiwikBundle\EventListener\LifecycleSubscriber
+    newscoop_analytics_plugin.lifecyclesubscriber:
+        class: Newscoop\AnalyticsBundle\EventListener\LifecycleSubscriber
         arguments:
             - @em
         tags:
             - { name: kernel.event_subscriber}
 
-    newscoop_piwik_plugin.configure_menu_listener:
-        class: Newscoop\PiwikBundle\EventListener\ConfigureMenuListener
+    newscoop_analytics_plugin.configure_menu_listener:
+        class: Newscoop\AnalyticsBundle\EventListener\ConfigureMenuListener
         tags:
             - { name: kernel.event_listener, event: newscoop_newscoop.menu_configure, method: onMenuConfigure }
         arguments: 
             - @translator
 
-    newscoop_piwik_plugin.piwikservice:
-        class: Newscoop\PiwikBundle\Services\PiwikService
+    newscoop_analytics_plugin.analyticsservice:
+        class: Newscoop\AnalyticsBundle\Services\AnalyticsService
         arguments:
             - @em
 
-    newscoop_piwik_plugin.piwikpublicationsettings:
-        class: Newscoop\PiwikBundle\Form\Type\PiwikPublicationSettingsType
+    newscoop_analytics_plugin.analyticspublicationsettings:
+        class: Newscoop\AnalyticsBundle\Form\Type\AnalyticsPublicationSettingsType
         tags:
-            - { name: form.type, alias: piwikpublicationsettings }
+            - { name: form.type, alias: analyticspublicationsettings }
