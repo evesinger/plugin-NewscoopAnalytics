@@ -52,4 +52,7 @@ plugin:
     post-description: "When activated, this will add an option to the tracking code so that the request method is 'POST' (the default is 'GET'). To use the POST request method, the Piwik host must be the same as the tracked website host (i.e.Piwik installed in the same domain as your tracked website)."
     activate-description: "If you have the option <i>Activate</i> checked, you can visit the publication's website and look at the source code. Depending on where you pasted the tag in the templates, you should find the analytics code at the top or bottom of the page."
     code-description: "The code will generate a HTTP request with your collected visitor's data that is sent to the Piwik or Google server for processing. Based on this collected data, reports can be retrieved to gain valuable information about how the visitor of your publication behave. Reports can be displayed in the Piwik or Google Analytics admin interface. We will provide reporting functionality within Newscoop in some later version of this plugin."
+    select-publication: "Please select a publication from the list."
+    url-invalid: "URL is not valid."
+    settings-saved: "Settings saved. You can now use analytics in your templates."
     google-description: "Google provides 2 JavaScript code options for web tracking: <i>Classic Analytics</i> (ga.js) and the more recent <i>Universal Analytics</i> (analytics.js)."

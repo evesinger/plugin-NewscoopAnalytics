@@ -47,8 +47,8 @@ class PublicationSettings
     private $authToken;
 
     /**
-     * @ORM\Column(type="integer", name="siteId")
-     * @var integer
+     * @ORM\Column(type="string", name="siteId")
+     * @var string
      */
     private $siteId;
 
@@ -175,7 +175,7 @@ class PublicationSettings
     /**
      * Getter for siteId
      *
-     * @return integer
+     * @return string
      */
     public function getSiteId()
     {
@@ -185,7 +185,7 @@ class PublicationSettings
     /**
      * Setter for siteId
      *
-     * @param integer $siteId Value to set
+     * @param string $siteId Value to set
      *
      * @return self
      */

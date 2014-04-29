@@ -25,11 +25,11 @@ class DefaultController extends Controller
         $settings = $em->getRepository('Newscoop\AnalyticsBundle\Entity\PublicationSettings')->findOneByPublication($id);
 
         if ($id === null) {
-            $error = $this->get('translator')->trans('Please select a publication from the list.');
+            $error = $this->get('translator')->trans('plugin.admin.select-publication');
         } else {
             $publication = $em->getRepository('Newscoop\Entity\Publication')->findOneById($id);
         }
-        
+
         if (isset($publication)) {
             $aliasid = $publication->getDefaultAliasId();
             $alias = $em->getRepository('Newscoop\Entity\Aliases')->findOneById($aliasid);
@@ -45,7 +45,7 @@ class DefaultController extends Controller
                     $testAlias = $aliasUrl;
                 }        
                 if (!filter_var($testAlias, FILTER_VALIDATE_URL)) {
-                    $valid = $this->get('translator')->trans('URL is not valid.');
+                    $valid = $this->get('translator')->trans('plugin.admin.url-invalid');
                 }
             }
         }
@@ -62,7 +62,9 @@ class DefaultController extends Controller
                 $publicationsettings->setIpAnonymise($settings->getIpAnonymise());
                 $publicationsettings->setTrackingType($settings->getTrackingType());
                 $publicationsettings->setActive($settings->getActive());
-                $publicationsettings->setAuthToken($settings->getAuthToken());
+                if ($settings->getAuthToken()!="unknown") {
+                    $publicationsettings->setAuthToken($settings->getAuthToken());
+                }
             } else {
                 $publicationsettings->setActive($active = true);
                 $publicationsettings->setIpAnonymise($ipAnonymise = false);
@@ -81,7 +83,7 @@ class DefaultController extends Controller
                 $em->persist($publicationsettings);
                 $em->flush();
 
-                $sent = $this->get('translator')->trans('Settings saved. You can now use analytics in your templates.');
+                $sent = $this->get('translator')->trans('plugin.admin.settings-saved');
             }
         }
 

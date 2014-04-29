@@ -1,6 +1,5 @@
 {
     "name": "newscoop/newscoop-plugin-analytics",
-    "replace": {"newscoop/newscoop-plugin-piwik": "self.version"},
     "description": "Analytics bundle for Newscoop.",
     "keywords": ["newscoop", "piwik", "analytics", "piwik-plugin"],
     "version": "0.2",
