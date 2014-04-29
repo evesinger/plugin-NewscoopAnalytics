@@ -47,7 +47,7 @@
 			{{ form_errors(form.piwikUrl) }}
 		</div>
 
-		<div class="row">
+		<div class="hidden">
 			{{ form_label(form.authToken) }}
 			{{ form_widget(form.authToken, { 'attr': {'placeholder': 'plugin.admin.enter-token'|trans }}) }}
 			{{ form_errors(form.authToken) }}
@@ -57,6 +57,12 @@
 			{{ form_label(form.siteId, "Site ID") }}
 			{{ form_widget(form.siteId, { 'attr': { 'min' : '1', 'placeholder': 'plugin.admin.enter-id'|trans }}) }}
 			{{ form_errors(form.siteId) }}
+		</div>
+
+		<div class="row">
+			{{ form_label(form.googleSiteId, "Google Site ID") }}
+			{{ form_widget(form.googleSiteId, { 'attr': { 'placeholder': 'plugin.admin.enter-id'|trans }}) }}
+			{{ form_errors(form.googleSiteId) }}
 		</div>
 
 		<div class="row">

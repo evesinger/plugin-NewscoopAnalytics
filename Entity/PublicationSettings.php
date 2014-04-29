@@ -53,6 +53,12 @@ class PublicationSettings
     private $siteId;
 
     /**
+     * @ORM\Column(type="string", name="googleSiteId")
+     * @var string
+     */
+    private $googleSiteId;
+
+    /**
      * @ORM\Column(type="boolean", name="active")
      * @var boolean
      */
@@ -192,6 +198,30 @@ class PublicationSettings
     public function setSiteId($siteId)
     {
         $this->siteId = $siteId;
+    
+        return $this;
+    }
+
+    /**
+     * Getter for googleSiteId
+     *
+     * @return string
+     */
+    public function getGoogleSiteId()
+    {
+        return $this->googleSiteId;
+    }
+    
+    /**
+     * Setter for googleSiteId
+     *
+     * @param string $googleSiteId Value to set
+     *
+     * @return self
+     */
+    public function setGoogleSiteId($googleSiteId)
+    {
+        $this->googleSiteId = $googleSiteId;
     
         return $this;
     }

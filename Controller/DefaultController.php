@@ -62,6 +62,7 @@ class DefaultController extends Controller
                 $publicationsettings->setIpAnonymise($settings->getIpAnonymise());
                 $publicationsettings->setTrackingType($settings->getTrackingType());
                 $publicationsettings->setActive($settings->getActive());
+                $publicationsettings->setGoogleSiteId($settings->getGoogleSiteId());
                 if ($settings->getAuthToken()!="unknown") {
                     $publicationsettings->setAuthToken($settings->getAuthToken());
                 }

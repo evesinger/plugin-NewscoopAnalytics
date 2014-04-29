@@ -27,7 +27,16 @@ class AnalyticsPublicationSettingsType extends AbstractType
                 'required' => false,
                 'empty_data' => 'unknown',
                 ))
-            ->add('siteId', 'text', array(
+            ->add('siteId', 'integer', array(
+                'constraints' => new Assert\Regex(array(
+                    'pattern' => '/^[1-9]{1,45}$/',
+                    'match'   => true,
+                    'message' => 'numbers greater than 0 only',
+                    ))
+                ))
+             ->add('googleSiteId', 'text', array(
+                    'required' => false,
+                    'empty_data' => 'unknown',
                 ))
             ->add('trackingType', 'choice', array(
                 'choices' => array(
