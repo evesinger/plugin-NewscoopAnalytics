@@ -47,10 +47,16 @@ class PublicationSettings
     private $authToken;
 
     /**
-     * @ORM\Column(type="integer", name="siteId")
-     * @var integer
+     * @ORM\Column(type="string", name="siteId")
+     * @var string
      */
     private $siteId;
+
+    /**
+     * @ORM\Column(type="string", name="googleSiteId")
+     * @var string
+     */
+    private $googleSiteId;
 
     /**
      * @ORM\Column(type="boolean", name="active")
@@ -175,7 +181,7 @@ class PublicationSettings
     /**
      * Getter for siteId
      *
-     * @return integer
+     * @return string
      */
     public function getSiteId()
     {
@@ -185,13 +191,37 @@ class PublicationSettings
     /**
      * Setter for siteId
      *
-     * @param integer $siteId Value to set
+     * @param string $siteId Value to set
      *
      * @return self
      */
     public function setSiteId($siteId)
     {
         $this->siteId = $siteId;
+    
+        return $this;
+    }
+
+    /**
+     * Getter for googleSiteId
+     *
+     * @return string
+     */
+    public function getGoogleSiteId()
+    {
+        return $this->googleSiteId;
+    }
+    
+    /**
+     * Setter for googleSiteId
+     *
+     * @param string $googleSiteId Value to set
+     *
+     * @return self
+     */
+    public function setGoogleSiteId($googleSiteId)
+    {
+        $this->googleSiteId = $googleSiteId;
     
         return $this;
     }

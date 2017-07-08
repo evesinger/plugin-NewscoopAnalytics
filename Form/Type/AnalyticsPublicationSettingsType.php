@@ -34,6 +34,10 @@ class AnalyticsPublicationSettingsType extends AbstractType
                     'message' => 'numbers greater than 0 only',
                     ))
                 ))
+             ->add('googleSiteId', 'text', array(
+                    'required' => false,
+                    'empty_data' => 'unknown',
+                ))
             ->add('trackingType', 'choice', array(
                 'choices' => array(
                     '0' => 'Default (Piwik JavaScript & ImageTracker)',

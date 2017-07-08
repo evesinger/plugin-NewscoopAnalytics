@@ -4,11 +4,11 @@
 {% block admin_page_title_content %}{{ 'plugin.admin.titlecontent'|trans }}<span class="glyphicon glyphicon-signal">{% endblock %}
 
 {% block admin_stylesheets %}
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/bundles/newscoopanalytics/analytics.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/bundles/newscoopanalytics/plugin-analytics.css') }}"/>
 {% endblock %}
 
 {% block admin_scripts %}
-    <script type="text/javascript" src="{{ asset('public/bundles/newscoopanalytics/analytics.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/bundles/newscoopanalytics/plugin-analytics.js') }}"></script>
 {% endblock %}
 
 {% block admin_content %}
@@ -47,7 +47,7 @@
 			{{ form_errors(form.piwikUrl) }}
 		</div>
 
-		<div class="row">
+		<div class="hidden">
 			{{ form_label(form.authToken) }}
 			{{ form_widget(form.authToken, { 'attr': {'placeholder': 'plugin.admin.enter-token'|trans }}) }}
 			{{ form_errors(form.authToken) }}
@@ -57,6 +57,12 @@
 			{{ form_label(form.siteId, "Site ID") }}
 			{{ form_widget(form.siteId, { 'attr': { 'min' : '1', 'placeholder': 'plugin.admin.enter-id'|trans }}) }}
 			{{ form_errors(form.siteId) }}
+		</div>
+
+		<div class="row">
+			{{ form_label(form.googleSiteId, "Google Site ID") }}
+			{{ form_widget(form.googleSiteId, { 'attr': { 'placeholder': 'plugin.admin.enter-id'|trans }}) }}
+			{{ form_errors(form.googleSiteId) }}
 		</div>
 
 		<div class="row">
